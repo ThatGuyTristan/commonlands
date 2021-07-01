@@ -1,6 +1,5 @@
 <template lang="pug">
-  div
-    v-btn(class="primary" @click="usePotion") Potion!
+  v-btn(class="primary" @click="usePotion") Potion!
 </template>
 
 <script>

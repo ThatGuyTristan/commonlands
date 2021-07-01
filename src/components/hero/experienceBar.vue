@@ -1,6 +1,5 @@
 <template lang="pug">
-  div
-    v-progress-linear(:value="progress" height=3 background-color="grey" color="yellow")
+  v-progress-linear(:value="progress" height=3 background-color="grey" color="yellow")
 </template>
 
 <script>
