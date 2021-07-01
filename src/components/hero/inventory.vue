@@ -2,11 +2,12 @@
   v-row
     v-col(cols="5")
       div.mx-auto(v-for="(item, i) in value")
-        v-btn(@click="log(item.method)") {{ item.name }}
+        v-btn(@click="doThing(item.method)") {{ item.name }}
 </template>
 
 <script>
 import itemLibrary from '@/assets/js/items.js';
+import { eventBus } from "@/main";
 
 export default {
   data() {
@@ -25,8 +26,8 @@ export default {
     }
   },
   methods: {
-    log(foo){
-      console.log(foo);
+    doThing(foo){
+      eventBus.$emit(foo);
     },
   },
 };
