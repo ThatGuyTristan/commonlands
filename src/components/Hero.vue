@@ -1,11 +1,14 @@
 <template lang="pug">
   v-container
     v-row
-      h2 Hero Window
+      h2.pl-3 Hero Window
     v-row
-      ExperienceBar
-      HealthBar
-      Inventory
+      v-col(cols="4")
+        ExperienceBar
+        HealthBar
+      v-col(cols="4")
+      v-col(cols="4")
+        Inventory
 </template>
 
 <script>

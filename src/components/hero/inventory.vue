@@ -1,10 +1,8 @@
 <template lang="pug">
   v-row
-    v-col(cols="5")
-      div.mx-auto(v-for="(item, i) in value")
-        v-btn(@click="doThing(item.method)") {{ item.name }}
-      div.mx-auto(v-for="n in emptySpots")
-        v-btn(disabled) Empty
+    v-col
+      v-chip.ma-auto(v-for="(item, i) in value" @click="doThing(item.method)") {{ item.name }}
+      v-chip(disabled v-for="n in emptySpots") Empty
 </template>
 
 <script>
@@ -20,7 +18,7 @@ export default {
   },
   computed: {
     emptySpots() {
-      return 8 - this.value.length;
+      return this.$store.state.maxInventory - this.value.length;
     }
   },
   created() {

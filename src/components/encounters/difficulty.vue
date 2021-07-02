@@ -8,8 +8,8 @@
 export default {
   name: "Difficulty",
   methods: {
-    setDifficulty(arg){
-      this.$store.dispatch("setDifficulty", arg);
+    setDifficulty(num){
+      this.$store.dispatch("setDifficulty", num);
     }
   }
 }

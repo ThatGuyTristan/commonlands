@@ -1,7 +1,7 @@
 <template lang="pug">
-  v-progress-linear(:value="value" height=10 background-color="red darken-4" color="red")
+  v-progress-linear(:value="(value / maxHealth) * 100" height=10 background-color="red darken-4" color="red")
     template(v-slot:default="{ value }")
-      .text-caption.white--text  {{ Math.round((value / maxHealth) * 100) }} % ({{ value }})
+      .text-caption.white--text  {{ (value / maxHealth) * 100 }}
 </template>
 
 <script>
@@ -19,12 +19,13 @@ export default {
     },
   },
   created() {
+    console.log(this.maxHealth)
     this.value = this.maxHealth;
     eventBus.$on("usePotion", () => {
       this.healDamage();
     });
-    setInterval(this.takeDamage, 1500);
-    setInterval(this.healDamage, 6000);
+   // setInterval(this.takeDamage, 1500);
+   // setInterval(this.healDamage, 6000);
   },
   watch: {
     value(val) {
@@ -48,7 +49,7 @@ export default {
         text: "You have been healed.",
         color: "green",
       });
-      this.value += 4;
+      this.currentHealth += 4;
     },
   },
 };

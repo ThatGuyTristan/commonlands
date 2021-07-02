@@ -1,6 +1,15 @@
 <template lang="pug">
-  div
-    h2 Encounter Window
+  v-container(fluid)
+    .title.mt-0 Encounter Window -- {{ encounterString }}
+      v-card(flat)
+        v-card-text.text--center
+          Difficulty(v-if="!encounterType")
+          Monster(v-if="encounterType == 'monster'")
+          Travel(v-if="encounterType == 'travel'")
+          Event(v-if="encounterType == 'event'")
+          Rest(v-if="encounterType == 'rest'")
+
+
 </template>
 
 <script>
@@ -11,6 +20,14 @@ export default {
     Travel: () => import("./encounters/travel.vue"),
     Event: () => import("./encounters/event.vue"),
     Rest: () => import("./encounters/rest.vue"),
+  },
+  data: () => ({
+    encounterString: "Choose your difficulty",
+  }),
+  computed: {
+    encounterType() {
+      return this.$store.state.encounterType;
+    }
   }
 }
 </script>
