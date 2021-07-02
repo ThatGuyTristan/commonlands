@@ -9,7 +9,7 @@
       <h3>A VueJS Playground App</h3>
     </v-app-bar>
 
-    <v-main>
+    <v-main :style="backgroundStyle">
       <router-view />
     </v-main>
     <snackbar></snackbar>
@@ -24,6 +24,12 @@ export default {
   name: "App",
 
   data: () => ({
+    imageLoc: "@/assets/images/dark-wood.png",
+    backgroundStyle: {
+      backgroundImage: 'url('+ require('@/assets/images/dark-wood.png') + ')',
+      backgroundRepeat: 'repeat',
+      backgroundColor: "#4f3f00",
+    },
     //
   }),
 };

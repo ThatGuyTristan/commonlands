@@ -1,5 +1,7 @@
 <template lang="pug">
-  v-progress-linear(:value="progress" height=3 background-color="grey" color="yellow")
+  v-progress-linear(:value="progress" height=10 background-color="grey" color="yellow")
+    template(v-slot:default="{ value }")
+      .text-caption.black--text Level {{ level }}
 </template>
 
 <script>
@@ -12,6 +14,11 @@ export default {
       progress: 20,
     };
   },
+  computed: {
+    level() {
+      return this.$store.state.level;
+    },
+  },
   // Remove this when we're done testing
   created() {
     setInterval(this.gainXp, 1500);
@@ -19,13 +26,21 @@ export default {
   watch: {
     progress(value) {
       if (value >= 100) {
-        eventBus.$emit("setSnack", "Level up!");
+        this.levelUp();
       }
     },
   },
   methods: {
+    levelUp() {
+      this.$store.dispatch("setLevel");
+      eventBus.$emit("setSnack", {
+        text: "Level up!",
+        color: "yellow darken-2",
+      });
+      this.progress -= 100;
+    },
     gainXp() {
-      this.progress += 20;
+      this.progress += 29;
       // console.log(this.progress);
     },
   },

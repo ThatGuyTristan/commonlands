@@ -1,16 +1,16 @@
 <template lang="pug">
   v-container(fill-height)
     v-row(no-gutters)
-      v-card.mx-auto(flat height="50%")
-        Monster
+      v-card.mx-auto(flat height="70%")
+        Encounter
     v-row(no-gutters)
-      v-card.mx-auto(flat height="50%")
+      v-card.mx-auto(flat height="30%")
         Hero
 </template>
 
 <script>
 import HelloWorld from "../components/HelloWorld";
-import Monster from "@/components/Monster";
+import Encounter from "@/components/encounter";
 import Hero from "@/components/Hero";
 
 export default {
@@ -18,7 +18,7 @@ export default {
 
   components: {
     HelloWorld,
-    Monster,
+    Encounter,
     Hero,
   },
 };
