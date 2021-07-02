@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import { eventBus } from "@/main";
+
 export default {
   name: "ExperienceBar",
   data() {
@@ -14,9 +16,16 @@ export default {
   created() {
     setInterval(this.gainXp, 1500);
   },
+  watch: {
+    progress(value) {
+      if (value >= 100) {
+        eventBus.$emit("setSnack", "Level up!");
+      }
+    },
+  },
   methods: {
     gainXp() {
-      this.progress += 1;
+      this.progress += 20;
       // console.log(this.progress);
     },
   },

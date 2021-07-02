@@ -1,9 +1,11 @@
 <template lang="pug">
-  v-container
+  v-container(fill-height)
     v-row(no-gutters)
-      Monster
+      v-card.mx-auto(flat height="50%")
+        Monster
     v-row(no-gutters)
-      Hero
+      v-card.mx-auto(flat height="50%")
+        Hero
 </template>
 
 <script>

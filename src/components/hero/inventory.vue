@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import itemLibrary from '@/assets/js/items.js';
+import itemLibrary from "@/assets/js/items.js";
 import { eventBus } from "@/main";
 
 export default {
@@ -21,12 +21,17 @@ export default {
     this.value = this.value.concat(this.items);
   },
   watch: {
-    value(val){
-      if (val) console.log('here', val);
-    }
+    value(val) {
+      if (val)
+        console.log(
+          "`                                                      here",
+          val
+        );
+    },
   },
   methods: {
-    doThing(foo){
+    doThing(foo) {
+      console.log("FOO", foo);
       eventBus.$emit(foo);
     },
   },

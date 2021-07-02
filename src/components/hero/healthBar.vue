@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { eventBus } from "@/main"
+import { eventBus } from "@/main";
 
 export default {
   data() {
@@ -14,9 +14,9 @@ export default {
     };
   },
   created() {
-    eventBus.$on('usePotion', () => {
+    eventBus.$on("usePotion", () => {
       this.healDamage();
-    })
+    });
     setInterval(this.takeDamage, 1500);
     setInterval(this.healDamage, 6000);
   },
@@ -32,6 +32,7 @@ export default {
       this.value -= 10;
     },
     healDamage() {
+      eventBus.$emit("setSnack", "Potion used!");
       this.value += 4;
     },
   },

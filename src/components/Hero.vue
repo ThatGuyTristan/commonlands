@@ -1,15 +1,13 @@
 <template lang="pug">
-  div
-    div
+  v-container
+    v-row
       h2 Hero Window
-    div
-      HealthBar
-    div
+    v-row
       ExperienceBar
-    div
+      HealthBar
       Inventory
-
 </template>
+
 <script>
 export default {
   components: {
