@@ -26,8 +26,8 @@ export default {
   data: () => ({
     imageLoc: "@/assets/images/dark-wood.png",
     backgroundStyle: {
-      backgroundImage: 'url('+ require('@/assets/images/dark-wood.png') + ')',
-      backgroundRepeat: 'repeat',
+      backgroundImage: "url(" + require("@/assets/images/dark-wood.png") + ")",
+      backgroundRepeat: "repeat",
       backgroundColor: "#4f3f00",
     },
     //

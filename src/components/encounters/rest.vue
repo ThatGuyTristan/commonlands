@@ -3,5 +3,5 @@
 <script>
 export default {
   name: "Rest",
-}
+};
 </script>

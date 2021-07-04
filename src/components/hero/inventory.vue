@@ -19,7 +19,7 @@ export default {
   computed: {
     emptySpots() {
       return this.$store.state.maxInventory - this.value.length;
-    }
+    },
   },
   created() {
     console.log(this.value);

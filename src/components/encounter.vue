@@ -27,7 +27,7 @@ export default {
   computed: {
     encounterType() {
       return this.$store.state.encounterType;
-    }
-  }
-}
+    },
+  },
+};
 </script>
