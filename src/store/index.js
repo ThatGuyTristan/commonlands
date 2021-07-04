@@ -32,7 +32,6 @@ export default new Vuex.Store({
           state.journeySteps = 12;
           break;
         default:
-          console.log("SD default");
       }
       console.log("SD,", value * 3);
       state.encounterType = "";

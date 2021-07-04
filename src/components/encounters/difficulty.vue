@@ -1,8 +1,8 @@
 <template lang="pug">
-  v-row
-    v-btn(color="primary" @click="setDifficulty(1)") Easy
-    v-btn(color="alert" @click="setDifficulty(2)") Normal
-    v-btn(color="warning" @click="setDifficulty(3)") Hard
+  v-row.justify-center
+    v-btn.mr-2(plain color="success" @click="setDifficulty(1)") Easy
+    v-btn.mx-2(plain color="alert" @click="setDifficulty(2)") Normal
+    v-btn.ml-2(plain color="error" @click="setDifficulty(3)") Hard
 </template>
 <script>
 import { eventBus } from "@/main";

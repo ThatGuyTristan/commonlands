@@ -1,8 +1,8 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
+    <v-app-bar app dark>
       <div class="d-flex align-center">
-        <h1>Commonlands</h1>
+        <h1>the Commonlands</h1>
       </div>
 
       <v-spacer></v-spacer>

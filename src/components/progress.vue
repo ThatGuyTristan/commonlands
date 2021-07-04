@@ -3,7 +3,7 @@
     .subtitle.ml-4 Journey Progress
     v-breadcrumbs.py-2(:items="items" divider='~~~' )
       template(v-slot:item="{ item }")
-        v-icon(:color="color(item.text)") {{ displayIcon(item.text)}}
+        v-icon(:color="iconColor(item.text)") {{ displayIcon(item.text)}}
 </template>
 
 <script>
@@ -20,12 +20,10 @@ export default {
       { text: "blank" },
     ],
   }),
-  computed: {
-    color(text) {
+  methods: {
+    iconColor(text) {
       return text == "Freeport" ? "green" : "grey";
     },
-  },
-  methods: {
     displayIcon(value) {
       switch (value) {
         case "Freeport":

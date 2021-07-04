@@ -1,7 +1,7 @@
 <template lang="pug">
   v-container(fluid)
     .title.mt-0 Encounter Window -- {{ encounterString }}
-      v-card(flat)
+      v-card(flat dark)
         v-card-text.text--center
           Difficulty(v-if="encounterType == 'difficulty'")
           Monster(v-if="encounterType == 'monster'")
