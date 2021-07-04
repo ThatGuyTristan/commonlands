@@ -1,7 +1,10 @@
 <template lang="pug">
-  v-progress-linear(:value="progress" height=10 background-color="grey" color="yellow")
-    template(v-slot:default="{ value }")
-      .text-caption.black--text Level {{ level }}
+  v-row(no-gutters)
+    h6 Experience:
+    v-progress-linear.mb-2(rounded :value="progress" height=10 background-color="grey" color="yellow")
+      template(v-slot:default="{ value }")
+        .text-caption.black--text Level {{ level }}
+
 </template>
 
 <script>

@@ -11,7 +11,7 @@ export default new Vuex.Store({
     maxInventory: 0,
     journeySteps: 0,
     experience: 0,
-    encounterType: "",
+    encounterType: "difficulty",
   },
   mutations: {
     setDifficulty(state, value) {
@@ -35,6 +35,7 @@ export default new Vuex.Store({
           console.log("SD default");
       }
       console.log("SD,", value * 3);
+      state.encounterType = "";
       state.difficulty = value;
     },
   },

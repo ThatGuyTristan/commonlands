@@ -1,6 +1,8 @@
 <template lang="pug">
-  v-progress-linear(:value="currentHealthPercent" height=10 background-color="red darken-4" color="green")
-    .text-caption.white--text  {{ value }} / {{ maxHealth}}
+  v-row(no-gutters)
+    h6 Health:
+    v-progress-linear(rounded :value="currentHealthPercent" height=10 background-color="red darken-4" color="green")
+      .text-caption.white--text  {{ value }} / {{ maxHealth}}
 </template>
 
 <script>

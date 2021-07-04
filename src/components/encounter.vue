@@ -3,7 +3,7 @@
     .title.mt-0 Encounter Window -- {{ encounterString }}
       v-card(flat)
         v-card-text.text--center
-          Difficulty(v-if="!encounterType")
+          Difficulty(v-if="encounterType == 'difficulty'")
           Monster(v-if="encounterType == 'monster'")
           Travel(v-if="encounterType == 'travel'")
           Event(v-if="encounterType == 'event'")
