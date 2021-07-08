@@ -3,6 +3,7 @@
     .title.mt-0 Encounter Window -- {{ encounterString }}
       v-card(flat dark)
         v-card-text.text--center
+          Character(v-if="encounterType == 'character'")
           Difficulty(v-if="encounterType == 'difficulty'")
           Monster(v-if="encounterType == 'monster'")
           Travel(v-if="encounterType == 'travel'")
@@ -15,6 +16,7 @@
 <script>
 export default {
   components: {
+    Character: () => import("./encounters/character.vue"),
     Monster: () => import("./encounters/monster.vue"),
     Difficulty: () => import("./encounters/difficulty.vue"),
     Travel: () => import("./encounters/travel.vue"),
