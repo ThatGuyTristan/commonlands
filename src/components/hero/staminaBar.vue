@@ -1,9 +1,9 @@
 <template lang="pug">
   v-row(no-gutters)
-    h6.mr-5 {{ label }}:
-    v-chip.pa-0(v-for="(resource, i) in maxStamina" :key="i" x-small label :color="resourceColor()")
+    h6.mr-2 {{ label }}:
+    v-chip.px-0.mx-1(v-for="(resource, i) in maxStamina" :key="i" x-small label :color="resourceColor()")
       v-avatar(center)
-        v-icon mdi-star
+        v-icon(color="yellow") mdi-star
 
 </template>
 
@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     resourceColor() {
-      return "yellow lighten-3";
+      return "yellow darken-3";
     },
   },
   created() {
