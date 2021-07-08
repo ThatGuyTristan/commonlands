@@ -14,7 +14,7 @@ export default {
       console.log(num);
       this.$store
         .dispatch("setClass", num)
-        .then(() => eventBus.$emit("classSelected"));
+        .then(() => eventBus.$emit("classSelected"), eventBus.$emit("gainExperience", 15));
     },
   },
   created(){

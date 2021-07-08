@@ -24,7 +24,7 @@ export default {
   },
   // Remove this when we're done testing
   created() {
-    setInterval(this.gainXp, 1500);
+    eventBus.$on("gainExperience", (exp) => this.gainExperience(exp));
   },
   watch: {
     progress(value) {
@@ -36,15 +36,15 @@ export default {
   methods: {
     levelUp() {
       this.$store.dispatch("setLevel");
+      eventBus.$emit("levelUp")
       eventBus.$emit("setSnack", {
         text: "Level up!",
         color: "yellow darken-2",
       });
       this.progress -= 100;
     },
-    gainXp() {
-      this.progress += 29;
-      // console.log(this.progress);
+    gainExperience(experience) {
+      this.progress += experience;
     },
   },
 };

@@ -26,8 +26,12 @@ export default {
       this.maxHealth = this.$store.state.maxHealth;
     });
     eventBus.$on("usePotion", () => {
-      this.healDamage();
+      this.healDamage(10);
     });
+    eventBus.$on("levelUp", () => {
+      this.maxHealth = this.$store.state.maxHealth;
+      this.healDamage(5 - this.$store.state.difficulty)
+    })
     setInterval(this.takeDamage, 1500);
     // setInterval(this.healDamage, 6000);
   },
@@ -45,7 +49,7 @@ export default {
       }
       this.value -= 10;
     },
-    healDamage() {
+    healDamage(heal) {
       if (this.value < 0 || this.value >= this.maxHealth) {
         return;
       }
@@ -53,7 +57,7 @@ export default {
         text: "You have been healed.",
         color: "green",
       });
-      this.value += 4;
+      this.value += heal;
     },
   },
 };
