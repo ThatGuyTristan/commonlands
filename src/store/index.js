@@ -36,8 +36,7 @@ export default new Vuex.Store({
       state.encounterType = "monster";
       state.difficulty = value;
     },
-    chooseCharacter(state, value) {
-      console.log("chooseCharacter");
+    setCharacter(state, value) {
       switch (value) {
         case 1:
           state.maxHealth = 100;
@@ -63,7 +62,7 @@ export default new Vuex.Store({
     },
     setCharacter(context, value) {
       console.log("setClass");
-      context.commit("chooseCharacter", value);
+      context.commit("setCharacter", value);
     },
     setLevel() {
       this.state.maxHealth += 5 - this.state.difficulty;

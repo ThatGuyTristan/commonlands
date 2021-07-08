@@ -1,6 +1,5 @@
 <template lang="pug">
   div.text-center
-    .title.text-center Journey Progress
     v-stepper(v-model="value" alt-labels flat)
       v-stepper-header
         template(v-for="(step, i) in steps")

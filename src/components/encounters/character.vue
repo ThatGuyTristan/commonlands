@@ -14,7 +14,7 @@ export default {
       this.$store
         .dispatch("setCharacter", num)
         .then(
-          () => eventBus.$emit("classSelected"),
+          () => eventBus.$emit("characterSet"),
           eventBus.$emit("gainExperience", 15)
         );
     },
