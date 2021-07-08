@@ -1,6 +1,6 @@
 <template lang="pug">
   v-row(no-gutters)
-    h6 {{ label }}: -- {{ maxStamina }}
+    h6.mr-5 {{ label }}:
     v-chip.pa-0(v-for="(resource, i) in maxStamina" :key="i" x-small label :color="resourceColor()")
       v-avatar(center)
         v-icon mdi-star

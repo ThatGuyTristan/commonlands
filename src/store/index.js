@@ -9,6 +9,7 @@ export default new Vuex.Store({
     level: 1,
     maxHealth: 0,
     maxInventory: 0,
+    maxStamina: 0,
     journeySteps: 0,
     experience: 0,
     encounterType: "character",
@@ -40,12 +41,15 @@ export default new Vuex.Store({
       switch (value) {
         case 1:
           state.maxHealth = 100;
+          state.maxStamina = 5;
           break;
         case 2:
           state.maxHealth = 120;
+          state.maxStamina = 4;
           break;
         case 3:
           state.maxHealth = 90;
+          state.maxStamina = 3;
           break;
         default:
           console.log("Character error");
@@ -57,7 +61,7 @@ export default new Vuex.Store({
     setDifficulty(context, value) {
       context.commit("setDifficulty", value);
     },
-    setClass(context, value) {
+    setCharacter(context, value) {
       console.log("setClass");
       context.commit("chooseCharacter", value);
     },
