@@ -28,6 +28,9 @@ export default {
       this.value = this.$store.state.maxStamina;
       this.maxStamina = this.$store.state.maxStamina;
     });
+    eventBus.$on("rest", () => {
+      this.value + (5 - this.$store.state.difficulty);
+    })
   },
 };
 </script>
