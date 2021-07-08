@@ -11,14 +11,16 @@ export default {
   name: "Character",
   methods: {
     setCharacter(num) {
-      console.log(num);
       this.$store
-        .dispatch("setClass", num)
-        .then(() => eventBus.$emit("classSelected"), eventBus.$emit("gainExperience", 15));
+        .dispatch("setCharacter", num)
+        .then(
+          () => eventBus.$emit("classSelected"),
+          eventBus.$emit("gainExperience", 15)
+        );
     },
   },
-  created(){
+  created() {
     eventBus.$emit("setEncounterString", "Who are you?");
-  }
+  },
 };
 </script>

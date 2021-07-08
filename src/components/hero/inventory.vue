@@ -1,7 +1,7 @@
 <template lang="pug">
   v-row
     v-col
-      v-chip.ma-auto(v-for="(item, i) in value" @click="doThing(item.method)") {{ item.name }}
+      v-chip.ma-auto(v-for="(item, i) in value" :key="i" @click="doThing(item.method)") {{ item.name }}
       v-chip(disabled v-for="n in emptySpots") Empty
 </template>
 

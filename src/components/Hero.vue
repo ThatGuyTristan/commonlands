@@ -6,6 +6,7 @@
       v-col(cols="4")
         ExperienceBar
         HealthBar
+        StaminaBar
       v-col(cols="4")
         Inventory
       v-col(cols="4")
@@ -17,8 +18,9 @@ export default {
   components: {
     HealthBar: () => import("@/components/hero/healthBar"),
     ExperienceBar: () => import("@/components/hero/experienceBar"),
+    StaminaBar: () => import("@/components/hero/staminaBar"),
     Inventory: () => import("@/components/hero/inventory"),
-    Skills: () => import("@/components/hero/skills")
+    Skills: () => import("@/components/hero/skills"),
   },
 };
 </script>

@@ -12,17 +12,17 @@ import monsters from "@/assets/js/monsters";
 export default {
   data: () => ({
     monsters: monsters,
-    monster: null
+    monster: null,
   }),
   methods: {
-    pickMonster(){
-      let i = Math.round(Math.random() * this.monsters.length)
-      this.monster = this.monsters[i]
-      eventBus.$emit("setEncounterString", "You encounter a monster!")
+    pickMonster() {
+      let i = Math.round(Math.random() * this.monsters.length);
+      this.monster = this.monsters[i];
+      eventBus.$emit("setEncounterString", "You encounter a monster!");
     },
   },
-  created(){
+  created() {
     this.pickMonster();
-  }
-}
+  },
+};
 </script>

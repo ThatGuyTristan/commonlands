@@ -1,7 +1,7 @@
 <template lang="pug">
   v-row(no-gutters)
     h6 Health:
-    v-progress-linear(rounded :value="currentHealthPercent" height=10 background-color="red darken-4" color="green")
+    v-progress-linear.mb-2(rounded :value="currentHealthPercent" height=10 background-color="red darken-4" color="green")
       .text-caption.white--text  {{ value }} / {{ maxHealth}}
 </template>
 
@@ -21,7 +21,7 @@ export default {
     },
   },
   created() {
-    eventBus.$on("difficultySet", () => {
+    eventBus.$on("characterSet", () => {
       this.value = this.$store.state.maxHealth;
       this.maxHealth = this.$store.state.maxHealth;
     });
