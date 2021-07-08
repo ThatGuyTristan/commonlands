@@ -35,7 +35,7 @@ export default new Vuex.Store({
       state.encounterType = "monster";
       state.difficulty = value;
     },
-    chooseCharacter(state, value){
+    chooseCharacter(state, value) {
       console.log("chooseCharacter");
       switch (value) {
         case 1:
@@ -51,13 +51,13 @@ export default new Vuex.Store({
           console.log("Character error");
       }
       state.encounterType = "difficulty";
-    }
+    },
   },
   actions: {
     setDifficulty(context, value) {
       context.commit("setDifficulty", value);
     },
-    setClass(context, value){
+    setClass(context, value) {
       console.log("setClass");
       context.commit("chooseCharacter", value);
     },

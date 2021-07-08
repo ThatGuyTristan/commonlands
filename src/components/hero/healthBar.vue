@@ -21,7 +21,7 @@ export default {
     },
   },
   created() {
-    eventBus.$on("difficultySet", () => {
+    eventBus.$on("characterSet", () => {
       this.value = this.$store.state.maxHealth;
       this.maxHealth = this.$store.state.maxHealth;
     });

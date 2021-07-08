@@ -31,13 +31,13 @@ export default {
       return this.$store.state.encounterType;
     },
   },
-  created(){
+  created() {
     eventBus.$on("setEncounterString", this.setString);
   },
   methods: {
-    setString(string){
+    setString(string) {
       this.encounterString = string;
-    }
-  }
+    },
+  },
 };
 </script>

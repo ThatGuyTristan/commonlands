@@ -11,14 +11,14 @@ import wizard_skills from "@/assets/js/wizard_skills";
 
 export default {
   data: () => ({
-    skills:wizard_skills
+    skills: wizard_skills,
   }),
   methods: {
     findCondition(condition) {
       if (condition == this.$store.state.encounterType) {
         return true;
       }
-    }
-  }
+    },
+  },
 };
 </script>
