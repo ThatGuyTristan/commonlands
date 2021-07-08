@@ -7,10 +7,11 @@
 
 <script>
 import wizard_skills from "@/assets/js/wizard_skills";
+import warrior_skills from "@/assets/js/warrior_skills";
 
 export default {
   data: () => ({
-    skills: wizard_skills,
+    skills: [wizard_skills, warrior_skills]
   }),
   methods: {
     findCondition(condition) {
