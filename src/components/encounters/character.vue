@@ -1,7 +1,7 @@
 <template lang="pug">
   v-row.justify-center
-    v-btn.mr-2(plain color="success" @click="setCharacter(1)") A cunning Rogue
-    v-btn.mx-2(plain color="alert" @click="setCharacter(2)") A brave warrior
+    v-btn.mx-2(plain color="success" @click="setCharacter(2)") A brave warrior
+    v-btn.mr-2(plain @click="setCharacter(1)") A cunning Rogue
     v-btn.ml-2(plain color="error" @click="setCharacter(3)") A jaded wizard
 </template>
 <script>
