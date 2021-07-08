@@ -1,26 +1,30 @@
 <template lang="pug">
-  div
-    .subtitle.ml-4 Journey Progress
-    v-breadcrumbs.py-2(:items="items" divider='~~~' )
-      template(v-slot:item="{ item }")
-        v-icon(:color="iconColor(item.text)") {{ displayIcon(item.text)}}
+  div.text-center
+    .title.text-center Journey Progress
+    v-stepper(v-model="value" alt-labels flat)
+      v-stepper-header
+        template(v-for="(step, i) in steps")
+          v-stepper-step(:color="stepComplete(i)" :complete="i < value" :key="`${i}-step`") {{ i }}
+          v-divider(v-if="i !== steps - 1")
+    v-btn(@click="value++" :key="i") increase
 </template>
 
 <script>
+import { eventBus } from "@/main";
+
 export default {
   name: "JourneyProgress",
   data: () => ({
-    items: [
-      { text: "Freeport" },
-      { text: "blank" },
-      { text: "blank" },
-      { text: "blank" },
-      { text: "blank" },
-      { text: "blank" },
-      { text: "blank" },
-    ],
+    value: 0,
   }),
   methods: {
+    stepComplete(i) {
+      if (i < this.value) {
+        return "green";
+      } else {
+        return "grey";
+      }
+    },
     iconColor(text) {
       return text == "Freeport" ? "green" : "grey";
     },
@@ -32,6 +36,17 @@ export default {
           return "mdi-help-rhombus-outline";
       }
     },
+  },
+  computed: {
+    steps() {
+      return this.$store.state.journeySteps;
+    },
+  },
+  created() {
+    // setInterval(() => {
+    //   this.value++;
+    // }, 1500);
+    eventBus.$on("increaseProgress", this.value++);
   },
 };
 </script>
