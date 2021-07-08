@@ -16,5 +16,8 @@ export default {
         .then(() => eventBus.$emit("difficultySet"));
     },
   },
+  created(){
+    eventBus.$emit("setEncounterString", "Choose your difficulty");
+  }
 };
 </script>

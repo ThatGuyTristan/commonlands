@@ -32,7 +32,7 @@ export default new Vuex.Store({
           console.log("Difficulty error");
       }
       console.log("SD,", value * 3);
-      state.encounterType = "";
+      state.encounterType = "monster";
       state.difficulty = value;
     },
     chooseCharacter(state, value){

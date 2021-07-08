@@ -1,6 +1,6 @@
 <template lang="pug">
   v-container(fluid)
-    .title.mt-0 Encounter Window -- {{ encounterString }}
+    .title.mt-0.text-center {{ encounterString }}
       v-card(flat dark)
         v-card-text.text--center
           Character(v-if="encounterType == 'character'")
@@ -9,11 +9,11 @@
           Travel(v-if="encounterType == 'travel'")
           Event(v-if="encounterType == 'event'")
           Rest(v-if="encounterType == 'rest'")
-
-
 </template>
 
 <script>
+import { eventBus } from "@/main";
+
 export default {
   components: {
     Character: () => import("./encounters/character.vue"),
@@ -31,5 +31,13 @@ export default {
       return this.$store.state.encounterType;
     },
   },
+  created(){
+    eventBus.$on("setEncounterString", this.setString);
+  },
+  methods: {
+    setString(string){
+      this.encounterString = string;
+    }
+  }
 };
 </script>

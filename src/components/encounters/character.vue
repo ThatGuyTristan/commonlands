@@ -18,5 +18,8 @@ export default {
         .then(() => eventBus.$emit("classSelected"));
     },
   },
+  created(){
+    eventBus.$emit("setEncounterString", "Who are you?");
+  }
 };
 </script>
