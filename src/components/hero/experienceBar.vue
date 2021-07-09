@@ -36,7 +36,7 @@ export default {
   methods: {
     levelUp() {
       this.$store.dispatch("setLevel");
-      eventBus.$emit("levelUp")
+      eventBus.$emit("levelUp");
       eventBus.$emit("setSnack", {
         text: "Level up!",
         color: "yellow darken-2",

@@ -30,8 +30,8 @@ export default {
     });
     eventBus.$on("levelUp", () => {
       this.maxHealth = this.$store.state.maxHealth;
-      this.healDamage(5 - this.$store.state.difficulty)
-    })
+      this.healDamage(5 - this.$store.state.difficulty);
+    });
     setInterval(this.takeDamage, 1500);
     // setInterval(this.healDamage, 6000);
   },

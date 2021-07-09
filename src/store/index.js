@@ -12,6 +12,7 @@ export default new Vuex.Store({
     maxStamina: 0,
     journeySteps: 0,
     experience: 0,
+    character: 0,
     encounterType: "character",
   },
   mutations: {
@@ -37,18 +38,25 @@ export default new Vuex.Store({
       state.difficulty = value;
     },
     setCharacter(state, value) {
+      console.log("VALUE", value);
       switch (value) {
+        //warrior
         case 1:
-          state.maxHealth = 100;
-          state.maxStamina = 5;
-          break;
-        case 2:
-          state.maxHealth = 120;
+          state.maxHealth = 12;
           state.maxStamina = 4;
+          state.character = value;
           break;
+        //ranger
+        case 2:
+          state.maxHealth = 10;
+          state.maxStamina = 5;
+          state.character = value;
+          break;
+        //wizard
         case 3:
-          state.maxHealth = 90;
+          state.maxHealth = 8;
           state.maxStamina = 3;
+          state.character = value;
           break;
         default:
           console.log("Character error");
@@ -70,4 +78,7 @@ export default new Vuex.Store({
     },
   },
   modules: {},
+  getters: {
+    getCharacterClass: (state) => state.character,
+  },
 });

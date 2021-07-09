@@ -30,7 +30,7 @@ export default {
     });
     eventBus.$on("rest", () => {
       this.value + (5 - this.$store.state.difficulty);
-    })
+    });
   },
 };
 </script>
