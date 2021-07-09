@@ -2,7 +2,7 @@
   v-row(no-gutters)
     h6 Health:
     v-progress-linear.mb-2(rounded :value="currentHealthPercent" height=10 background-color="red darken-4" color="green")
-      .text-caption.white--text  {{ value }} / {{ maxHealth}}
+      .text-caption.white--text {{ captionText }}
 </template>
 
 <script>
@@ -19,6 +19,9 @@ export default {
     currentHealthPercent() {
       return (this.value / this.maxHealth) * 100;
     },
+    captionText(){
+      return this.value > 0 ? `${this.value} / ${this.maxHealth}` : 'You have died'
+    }
   },
   created() {
     eventBus.$on("characterSet", () => {

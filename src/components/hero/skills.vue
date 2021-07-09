@@ -1,7 +1,7 @@
 <template lang="pug">
-  v-row
+  v-row(no-gutters)
     v-col
-      v-btn(:disabled="!findCondition(item.condition)" :color="item.color" v-for="item in skills") {{ item.name }}
+      v-btn.mx-1(:disabled="!findCondition(item.condition)" :color="item.color" v-for="item in skills") {{ item.name }}
 </template>
 
 <script>
