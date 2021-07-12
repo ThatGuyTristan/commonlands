@@ -1,19 +1,15 @@
-<template>
-  <v-app>
-    <v-app-bar app dark>
-      <div class="d-flex align-center">
-        <h1>the Commonlands</h1>
-      </div>
+<template lang="pug">
+  v-app
+    v-app-bar(app dark)
+      div.d-flex.align-center
+        h1(id="mainTitle") the Commonlands
 
-      <v-spacer></v-spacer>
-      <h3>A VueJS Playground App</h3>
-    </v-app-bar>
+      v-spacer
+      h3 A VueJS Playground App
 
-    <v-main :style="backgroundStyle">
-      <router-view />
-    </v-main>
-    <snackbar></snackbar>
-  </v-app>
+    v-main(:style="backgroundStyle")
+      router-view
+    Snackbar
 </template>
 
 <script>
@@ -34,3 +30,34 @@ export default {
   }),
 };
 </script>
+
+<style scoped>
+#mainTitle{
+  font-family: "BlackCastle";
+}
+
+.v-application {
+  font-family: "oldEnglish";
+  font-size: 24px;
+}
+
+.h3 {
+  font-family: "Kelmscot";
+}
+
+@font-face {
+  font-family: "oldEnglish";
+  src: url("./assets/fonts/Old_Englished_Boots.ttf")
+}
+
+@font-face {
+  font-family: "BlackCastle";
+  src: url("./assets/fonts/BlackCastle.ttf")
+}
+
+@font-face {
+  font-family: "Kelmscot";
+  src: url("./assets/fonts/KELMSCOT.TTF");
+}
+
+</style>

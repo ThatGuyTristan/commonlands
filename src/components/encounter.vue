@@ -1,6 +1,6 @@
 <template lang="pug">
   v-container(fluid)
-    .title.mt-0.text-center {{ encounterString }}
+    h3.mt-0.text-center {{ encounterString }}
       v-card(flat dark)
         v-card-text.text--center
           Character(v-if="encounterType == 'character'")
