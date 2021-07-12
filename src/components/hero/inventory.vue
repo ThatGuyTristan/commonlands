@@ -12,28 +12,38 @@ import { eventBus } from "@/main";
 export default {
   data() {
     return {
-      items: itemLibrary,
       value: [],
     };
   },
   computed: {
+    inventorySize() {
+      return this.$store.state.maxInventory;
+    },
     emptySpots() {
-      return this.$store.state.maxInventory - this.value.length;
+      return this.inventorySize - this.value.length;
     },
   },
   created() {
-    console.log(this.value);
-    this.value = this.value.concat(this.items);
-  },
-  watch: {
-    value(val) {
-      if (val) console.log("here", val);
-    },
+    eventBus.$on("difficultySet", () => {
+      this.fillInventory();
+    });
   },
   methods: {
-    doThing(foo) {
-      console.log("FOO", foo);
-      eventBus.$emit(foo);
+    findItem() {
+      let i = Math.floor(itemLibrary.length * Math.random());
+      return itemLibrary[i];
+    },
+    addItemtoInventory(item) {
+      this.value.push(item);
+    },
+    fillInventory() {
+      let quantity = (4 - this.$store.state.difficulty);
+      let n = 0;
+      while (n < quantity) {
+        let item = this.findItem();
+        this.addItemtoInventory(item);
+        n++;
+      }
     },
   },
 };
