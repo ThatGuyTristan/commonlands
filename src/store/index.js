@@ -20,14 +20,19 @@ export default new Vuex.Store({
   mutations: {
     setDifficulty(state, value) {
       switch (value) {
+        //easy
         case 1:
           state.maxInventory = 8;
           state.journeySteps = 7;
+          state.maxHealth += 5;
           break;
+        //normal
         case 2:
           state.maxInventory = 5;
           state.journeySteps = 10;
+          state.maxHealth += 3;
           break;
+        //hard
         case 3:
           state.maxInventory = 3;
           state.journeySteps = 12;
@@ -35,30 +40,28 @@ export default new Vuex.Store({
         default:
           console.log("Difficulty error");
       }
-      console.log("SD,", value * 3);
-      state.encounterType = "monster";
+      state.encounterType = "rest";
       state.difficulty = value;
     },
     setCharacter(state, value) {
-      console.log("VALUE", value);
       switch (value) {
         //warrior
         case 1:
-          state.maxHealth = 12;
+          state.maxHealth += 12;
           state.maxStamina = 4;
           state.character = value;
           state.characterClass = "Warrior"
           break;
         //ranger
         case 2:
-          state.maxHealth = 10;
+          state.maxHealth += 10;
           state.maxStamina = 5;
           state.character = value;
           state.characterClass = "Ranger"
           break;
         //wizard
         case 3:
-          state.maxHealth = 8;
+          state.maxHealth += 8;
           state.maxStamina = 3;
           state.character = value;
           state.characterClass = "Wizard"
@@ -77,7 +80,6 @@ export default new Vuex.Store({
       context.commit("setDifficulty", value);
     },
     setCharacter(context, value) {
-      console.log("setClass");
       context.commit("setCharacter", value);
     },
     setLevel() {

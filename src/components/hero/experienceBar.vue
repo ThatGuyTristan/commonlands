@@ -27,11 +27,11 @@ export default {
       return this.$store.state.level;
     },
   },
-  // Remove this when we're done testing
   created() {
-    setInterval(() => {
-      this.gainExperience(20);
-    }, 1500);
+    // Remove this when we're done testing
+    // setInterval(() => {
+    //   this.gainExperience(20);
+    // }, 1500);
 
     eventBus.$on("gainExperience", (exp) => this.gainExperience(exp));
   },
@@ -54,6 +54,10 @@ export default {
     },
     gainExperience(experience) {
       this.progress += experience;
+      eventBus.$emit("setSnack", {
+        text: "You have gained experience!",
+        color: "yellow",
+      });
     },
   },
 };

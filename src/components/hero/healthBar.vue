@@ -19,33 +19,37 @@ export default {
     currentHealthPercent() {
       return (this.value / this.maxHealth) * 100;
     },
-    captionText(){
-      return this.value > 0 ? `${this.value} / ${this.maxHealth}` : 'You have died'
-    }
+    captionText() {
+      return `${this.value} / ${this.maxHealth}`
+    },
   },
   created() {
     eventBus.$on("characterSet", () => {
       this.value = this.$store.state.maxHealth;
       this.maxHealth = this.$store.state.maxHealth;
     });
-    eventBus.$on("usePotion", () => {
-      this.healDamage(10);
+    eventBus.$on("heal", (amount) => {
+      this.healDamage(amount);
     });
     eventBus.$on("levelUp", () => {
       this.maxHealth = this.$store.state.maxHealth;
       this.healDamage(5 - this.$store.state.difficulty);
     });
-    setInterval(this.takeDamage, 1500);
+    setInterval(this.takeDamage, 5000);
     // setInterval(this.healDamage, 6000);
   },
   watch: {
     value(val) {
-      if (val <= 0) {
+      if (val < 0) {
         eventBus.$emit("setSnack", {
           text: "You have died.",
-          color: "red"
-        })
+          color: "red",
+        });
         console.log("player dead!");
+      }
+
+      if (val >= this.maxHealth) {
+        this.value = this.maxHealth;
       }
     },
   },
@@ -54,14 +58,15 @@ export default {
       if (this.value < 0) {
         return;
       }
-      this.value -= 10;
+      this.value -= 1;
     },
     healDamage(heal) {
+      console.log("HEAL", heal);
       if (this.value < 0 || this.value >= this.maxHealth) {
         return;
       }
       eventBus.$emit("setSnack", {
-        text: "You have been healed.",
+        text: `You have been healed for ${heal}.`,
         color: "green",
       });
       this.value += heal;
