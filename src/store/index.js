@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    name: "",
     difficulty: 0,
     level: 1,
     maxHealth: 0,
@@ -13,6 +14,7 @@ export default new Vuex.Store({
     journeySteps: 0,
     experience: 0,
     character: 0,
+    characterClass: "",
     encounterType: "character",
   },
   mutations: {
@@ -45,24 +47,30 @@ export default new Vuex.Store({
           state.maxHealth = 12;
           state.maxStamina = 4;
           state.character = value;
+          state.characterClass = "Warrior"
           break;
         //ranger
         case 2:
           state.maxHealth = 10;
           state.maxStamina = 5;
           state.character = value;
+          state.characterClass = "Ranger"
           break;
         //wizard
         case 3:
           state.maxHealth = 8;
           state.maxStamina = 3;
           state.character = value;
+          state.characterClass = "Wizard"
           break;
         default:
           console.log("Character error");
       }
       state.encounterType = "difficulty";
     },
+    setName(state, value){
+      state.name = value;
+    }
   },
   actions: {
     setDifficulty(context, value) {
@@ -76,6 +84,9 @@ export default new Vuex.Store({
       this.state.maxHealth += 5 - this.state.difficulty;
       this.state.level++;
     },
+    setName(context, value) {
+      context.commit("setName", value)
+    }
   },
   modules: {},
   getters: {

@@ -59,5 +59,4 @@ export default {
   font-family: "Kelmscot";
   src: url("./assets/fonts/KELMSCOT.TTF");
 }
-
 </style>

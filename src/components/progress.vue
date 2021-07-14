@@ -11,7 +11,6 @@
             :key="`${i}-step`"
           ) {{ i }}
           v-divider(v-if="i !== steps - 1")
-    v-btn(@click="value++" :key="i") increase
 </template>
 
 <script>

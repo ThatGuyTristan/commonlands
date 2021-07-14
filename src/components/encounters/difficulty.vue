@@ -11,9 +11,13 @@ export default {
   name: "Difficulty",
   methods: {
     setDifficulty(num) {
-      this.$store
-        .dispatch("setDifficulty", num)
-        .then(() => eventBus.$emit("difficultySet"));
+      this.$store.dispatch("setDifficulty", num).then(
+        () => eventBus.$emit("difficultySet"),
+        eventBus.$emit("setSnack", {
+          text: "You set out from Freeport",
+          color: "blue",
+        })
+      );
     },
   },
   created() {

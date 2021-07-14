@@ -1,6 +1,6 @@
 <template lang="pug">
   v-snackbar(v-model="show" :color="color" rounded="pill")
-    h2.text-center {{ message }}
+    h2.text-center.my-auto {{ message }}
 </template>
 
 <script>

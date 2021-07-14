@@ -1,7 +1,9 @@
 <template lang="pug">
   v-container
     v-row
-      h2.pl-3 Hero Window
+      h2.pl-3 {{ displayName }},
+      h2.pl-3 Level {{ $store.state.level }}
+      h2.pl-3 {{ $store.state.characterClass}}
     v-row
       v-col(cols="4")
         ExperienceBar
@@ -22,6 +24,19 @@ export default {
     Inventory: () => import("@/components/hero/inventory"),
     Skills: () => import("@/components/hero/skills"),
   },
+  data: () => ({
+    displayName: null
+  }),
+  computed:{
+    characterName() {
+      return this.$store.state.name
+    },
+  },
+  watch: {
+    characterName(val){
+      this.displayName = val;
+    }
+  }
 };
 </script>
 <style scoped>

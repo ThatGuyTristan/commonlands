@@ -18,7 +18,11 @@ export default {
     pickMonster() {
       let i = Math.round(Math.random() * this.monsters.length);
       this.monster = this.monsters[i];
-      eventBus.$emit("setEncounterString", "You encounter a monster!");
+      eventBus.$emit("setEncounterString", "Monster");
+      eventBus.$emit("setSnack", {
+        text: `You have encountered a ${this.monster.name}.`,
+        color: "grey",
+      });
     },
   },
   created() {

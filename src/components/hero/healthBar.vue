@@ -41,6 +41,10 @@ export default {
   watch: {
     value(val) {
       if (val <= 0) {
+        eventBus.$emit("setSnack", {
+          text: "You have died.",
+          color: "red"
+        })
         console.log("player dead!");
       }
     },

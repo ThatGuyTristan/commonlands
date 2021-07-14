@@ -1,7 +1,12 @@
 <template lang="pug">
   v-row(no-gutters)
     h6 Experience:
-    v-progress-linear.mb-2(rounded :value="progress" height=10 background-color="grey" color="yellow")
+    v-progress-linear.mb-2(
+      rounded
+      :value="progress"
+      height=10
+      background-color="grey"
+      color="yellow")
       template(v-slot:default="{ value }")
         .text-caption.black--text Level {{ level }}
 
@@ -24,6 +29,10 @@ export default {
   },
   // Remove this when we're done testing
   created() {
+    setInterval(() => {
+      this.gainExperience(20);
+    }, 1500);
+
     eventBus.$on("gainExperience", (exp) => this.gainExperience(exp));
   },
   watch: {
@@ -38,7 +47,7 @@ export default {
       this.$store.dispatch("setLevel");
       eventBus.$emit("levelUp");
       eventBus.$emit("setSnack", {
-        text: "Level up!",
+        text: "You have leveled up!",
         color: "yellow darken-2",
       });
       this.progress -= 100;
