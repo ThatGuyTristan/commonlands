@@ -22,15 +22,15 @@ export default new Vuex.Store({
       switch (value) {
         //easy
         case 1:
+          state.maxHealth += 5;
           state.maxInventory = 8;
           state.journeySteps = 7;
-          state.maxHealth += 5;
           break;
         //normal
         case 2:
+          state.maxHealth += 3;
           state.maxInventory = 5;
           state.journeySteps = 10;
-          state.maxHealth += 3;
           break;
         //hard
         case 3:
