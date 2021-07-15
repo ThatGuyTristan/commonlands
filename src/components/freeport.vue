@@ -9,28 +9,37 @@
 </template>
 
 <script>
-import { eventBus } from "@/main"
+import { eventBus } from "@/main";
 
 export default {
   data: () => ({
-    status: 100,
+    status: 110,
   }),
-  created(){
-    setInterval(() => { this.reduceStatus(5) }, 1000)
+  created() {
+    // setInterval(() => { this.reduceStatus(5) }, 1000)
+    eventBus.$on("finishEvent", () => {
+      this.reduceStatus(10);
+    });
+    eventBus.$on("finishRest", () => {
+      this.reduceStatus(10);
+    })
   },
   methods: {
-    reduceStatus(num){
+    reduceStatus(num) {
       if (this.status > 0) {
         this.status -= num;
       }
-    }
+    },
   },
-  watch:{
-    status(val){
-      if (val <= 0){
-        eventBus.$emit("setSnack", { text: "Freeport has been conquered.", color: "red" })
+  watch: {
+    status(val) {
+      if (val <= 0) {
+        eventBus.$emit("setSnack", {
+          text: "Freeport has been conquered.",
+          color: "red",
+        });
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>

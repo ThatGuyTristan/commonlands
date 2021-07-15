@@ -16,7 +16,8 @@ export default {
         eventBus.$emit("setSnack", {
           text: "You set out from Freeport",
           color: "blue",
-        })
+        }),
+        eventBus.$emit("finishEvent", "freeport")
       );
     },
   },

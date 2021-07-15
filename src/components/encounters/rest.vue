@@ -37,6 +37,7 @@ export default {
     emit(emit, _value) {
       console.log(emit, "EMIT");
       eventBus.$emit(emit, _value);
+      eventBus.$emit("finishRest");
     },
   },
 };

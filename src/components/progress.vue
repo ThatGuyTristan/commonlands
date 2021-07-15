@@ -1,16 +1,11 @@
 <template lang="pug">
-  div.text-center
-    v-stepper(v-model="value" alt-labels flat)
-      v-stepper-header
+  div.text-center.mx-8
+    v-list
+      v-list-item
         template(v-for="(step, i) in steps")
-          v-stepper-step(
-            :color="stepComplete(i)"
-            :complete-icon="completeIcon(i)"
-            :complete="i < value"
-            :step="i"
-            :key="`${i}-step`"
-          ) {{ i }}
-          v-divider(v-if="i !== steps - 1")
+          v-list-item-content
+            ProgressItem(:event="events[i]" :key="i")
+          v-divider(role="presentation" v-if="(i + 1) < steps")
 </template>
 
 <script>
@@ -18,32 +13,19 @@ import { eventBus } from "@/main";
 import encounters from "@/assets/js/encounters";
 
 export default {
+  components: {
+    ProgressItem: () => import("./progressItem"),
+  },
   name: "JourneyProgress",
   data: () => ({
     value: 0,
+    events: [],
     encounters: encounters,
   }),
   methods: {
-    completeIcon(val){
-      val < this.value.length + 2 ? "$error" : "$edit";
-    },
-    stepComplete(i) {
-      if (i < this.value) {
-        return "green";
-      } else {
-        return "grey";
-      }
-    },
-    iconColor(text) {
-      return text == "Freeport" ? "green" : "grey";
-    },
-    displayIcon(value) {
-      switch (value) {
-        case "Freeport":
-          return "mdi-home";
-        default:
-          return "mdi-help-rhombus-outline";
-      }
+    addEvent(event) {
+      console.log("Add event", event)
+      this.events.push(event);
     },
   },
   computed: {
@@ -54,8 +36,8 @@ export default {
   created() {
     setInterval(() => {
       this.value++;
-       }, 1500);
-    eventBus.$on("increaseProgress", this.value++);
+    }, 1500);
+    eventBus.$on("finishEvent", this.addEvent);
   },
 };
 </script>
