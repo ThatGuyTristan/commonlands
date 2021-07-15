@@ -12,7 +12,6 @@ export default {
   data() {
     return {
       value: 0,
-      maxHealth: 0,
     };
   },
   computed: {
@@ -22,17 +21,18 @@ export default {
     captionText() {
       return `${this.value} / ${this.maxHealth}`
     },
+    maxHealth() {
+        return this.$store.state.maxHealth;
+      }
   },
   created() {
-    eventBus.$on("characterSet", () => {
+    eventBus.$on("difficultySet", () => {
       this.value = this.$store.state.maxHealth;
-      this.maxHealth = this.$store.state.maxHealth;
     });
     eventBus.$on("heal", (amount) => {
       this.healDamage(amount);
     });
     eventBus.$on("levelUp", () => {
-      this.maxHealth = this.$store.state.maxHealth;
       this.healDamage(5 - this.$store.state.difficulty);
     });
     setInterval(this.takeDamage, 5000);
