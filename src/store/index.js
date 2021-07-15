@@ -73,6 +73,14 @@ export default new Vuex.Store({
     },
     setName(state, value){
       state.name = value;
+    },
+    levelUp(state){
+      state.maxHealth += 5 - this.state.difficulty;
+      state.level++;
+      if (this.state.level % 3 === 0){
+        console.log("HEYO");
+        state.maxStamina++;
+      }
     }
   },
   actions: {
@@ -82,9 +90,8 @@ export default new Vuex.Store({
     setCharacter(context, value) {
       context.commit("setCharacter", value);
     },
-    setLevel() {
-      this.state.maxHealth += 5 - this.state.difficulty;
-      this.state.level++;
+    setLevel(context) {
+      context.commit("levelUp")
     },
     setName(context, value) {
       context.commit("setName", value)

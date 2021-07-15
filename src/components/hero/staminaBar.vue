@@ -1,10 +1,10 @@
 <template lang="pug">
   v-row(no-gutters)
     h6.mr-2 {{ label }}:
-    v-chip.px-0.mx-1(v-for="(resource, i) in maxStamina" :key="i" x-small label :color="resourceColor()")
+    v-chip.px-0.mx-1(v-for="(resource, i) in value" :key="i" x-small label :color="resourceColor()") {{ value }} / {{ maxStamina }}
       v-avatar(center)
         v-icon(color="yellow") mdi-star
-
+    v-btn(@click="value--") test
 </template>
 
 <script>
@@ -15,7 +15,6 @@ export default {
     return {
       label: "Stamina",
       value: 0,
-      maxStamina: 0,
     };
   },
   methods: {
@@ -23,12 +22,29 @@ export default {
       return "yellow darken-3";
     },
   },
+  computed: {
+    maxStamina() {
+      return this.$store.state.maxStamina;
+    },
+  },
+  watch: {
+    //make sure we never exceed make stamina
+    value(val) {
+      if (val >= this.maxStamina) {
+        this.value = this.maxStamina;
+      }
+    },
+  },
   created() {
     eventBus.$on("characterSet", () => {
       this.value = this.$store.state.maxStamina;
-      this.maxStamina = this.$store.state.maxStamina;
+    });
+    eventBus.$on("levelUp", () => {
+      //do not gain stamina on levelUp while playing on Hard
+      if (this.$store.state.difficulty != 3) this.value++;
     });
     eventBus.$on("rest", () => {
+      //adjust stamina gained by difficulty
       this.value + (5 - this.$store.state.difficulty);
     });
   },

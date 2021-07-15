@@ -13,9 +13,19 @@ export default {
   name: "Rest",
   data: () => ({
     actions: [
-      { name: "Meditate", action: "rest", value: 1 },
-      { name: "Cook a meal", action: "heal", value: 12 },
-      { name: "Practice Disciplines", action: "gainExperience", value: 100 },
+      {
+        name: "Meditate",
+        action: "rest",
+        value: 1,
+        subtitle: "Regain Stamina",
+      },
+      { name: "Cook a meal", action: "heal", value: 12, subtitle: "Heal" },
+      {
+        name: "Practice Disciplines",
+        action: "gainExperience",
+        value: 100,
+        subtitle: "Gain experience",
+      },
     ],
     prompt: "",
   }),
@@ -24,10 +34,10 @@ export default {
     eventBus.$emit("setEncounterString", "You take a moment to rest");
   },
   methods: {
-    emit(emit, _value){
+    emit(emit, _value) {
       console.log(emit, "EMIT");
       eventBus.$emit(emit, _value);
-    }
-  }
+    },
+  },
 };
 </script>
