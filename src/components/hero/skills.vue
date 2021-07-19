@@ -1,7 +1,12 @@
 <template lang="pug">
   v-row(no-gutters)
     v-col
-      v-btn.mx-1(:disabled="!findCondition(item.condition)" :color="item.color" v-for="item in skills") {{ item.name }}
+      v-btn.mx-1(
+        :disabled="!findCondition(item.condition)"
+        @click="doSpell()"
+        :color="item.color"
+        v-for="item in skills"
+      ) {{ item.name }}
 </template>
 
 <script>

@@ -3,6 +3,7 @@
     h2(:class="monster.threat") {{ monster.name }}
     h4 {{ monster.threat }}
     h6 {{ monster.attack }}
+    v-progress-llinear(rounded :value="currentHealthPercent" height=10 background-color="red darken-4" color="red")
 </template>
 
 <script>

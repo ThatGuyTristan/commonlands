@@ -45,7 +45,7 @@ export default {
     });
     eventBus.$on("rest", () => {
       //adjust stamina gained by difficulty
-      this.value + (5 - this.$store.state.difficulty);
+      this.value += (5 - this.$store.state.difficulty);
     });
   },
 };

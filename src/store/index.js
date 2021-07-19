@@ -40,7 +40,7 @@ export default new Vuex.Store({
         default:
           console.log("Difficulty error");
       }
-      state.encounterType = "rest";
+      state.encounterType = "prompt";
       state.difficulty = value;
     },
     setCharacter(state, value) {

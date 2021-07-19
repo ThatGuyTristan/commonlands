@@ -19,7 +19,7 @@ export default {
         value: 1,
         subtitle: "Regain Stamina",
       },
-      { name: "Cook a meal", action: "heal", value: 12, subtitle: "Heal" },
+      { name: "Cook a meal", action: "heal", value: 3, subtitle: "Heal" },
       {
         name: "Practice Disciplines",
         action: "gainExperience",
