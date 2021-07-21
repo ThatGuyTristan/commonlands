@@ -74,6 +74,9 @@ export default new Vuex.Store({
     setName(state, value){
       state.name = value;
     },
+    setEncounter(state, value){
+      state.encounterType = value
+    },
     levelUp(state){
       state.maxHealth += 5 - this.state.difficulty;
       state.level++;
@@ -95,6 +98,9 @@ export default new Vuex.Store({
     },
     setName(context, value) {
       context.commit("setName", value)
+    },
+    setEncounter(context, value){
+      context.commit("setEncounter", value)
     }
   },
   modules: {},

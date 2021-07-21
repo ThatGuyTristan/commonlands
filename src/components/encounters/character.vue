@@ -14,6 +14,7 @@
       v-btn.mr-2(plain @click="setCharacter(2)") A cunning ranger
       v-btn.ml-2(plain color="error" @click="setCharacter(3)") A jaded wizard
 </template>
+
 <script>
 import { eventBus } from "@/main";
 

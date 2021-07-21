@@ -1,9 +1,9 @@
 <template lang="pug">
-  v-container
-    v-row
-      h2.pl-3 {{ displayName }},
-      h2.pl-3 Level {{ $store.state.level }}
-      h2.pl-3 {{ $store.state.characterClass}}
+  v-container(fluid)
+    v-row(no-gutters)
+        h5.title.pl-3 {{ displayName }} ||
+        h5.pl-3 Level {{ $store.state.level }}
+        h5.pl-3 {{ $store.state.characterClass}}
     v-row
       v-col(cols="4")
         ExperienceBar

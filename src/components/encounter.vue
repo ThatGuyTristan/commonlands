@@ -1,8 +1,11 @@
 <template lang="pug">
   v-container(fluid)
     h3.mt-0.text-center {{ encounterString }}
-      v-card(flat dark)
-          Intro(v-if="intro" @done="intro = false")
+    v-card(flat dark style="height:100px")
+      v-card-text.text-center.align-center
+        div(v-if="intro")
+          Intro(@done="intro = false")
+        div(v-else)
           Prompt(v-if="encounterType == 'prompt'")
           Character(v-if="encounterType == 'character'")
           Difficulty(v-if="encounterType == 'difficulty'")
