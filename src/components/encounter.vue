@@ -16,8 +16,6 @@
 </template>
 
 <script>
-import { eventBus } from "@/main";
-
 export default {
   components: {
     Intro: () => import("./encounters/introduction.vue"),
@@ -31,7 +29,7 @@ export default {
   },
   data: () => ({
     encounterString: "Choose your difficulty",
-    intro: true
+    intro: true,
   }),
   computed: {
     encounterType() {
@@ -39,9 +37,18 @@ export default {
     },
   },
   created() {
-    eventBus.$on("setEncounterString", this.setString);
+    this.$eventHub.$on("setEncounterString", this.setString);
+    this.$eventHub.$on("finishRest", this.setEncounter)
+    this.$eventHub.$on("finishEvent", this.setRest)
   },
   methods: {
+    setRest(){
+      this.$store.dispatch("setEncounter", "prompt")
+    },
+    setEncounter(){
+      let encounters = ["monster"]
+      this.$store.dispatch("setEncounter", encounters[0])
+    },
     setString(string) {
       this.encounterString = string;
     },

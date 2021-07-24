@@ -13,8 +13,6 @@
 </template>
 
 <script>
-import { eventBus } from "@/main";
-
 export default {
   name: "ExperienceBar",
   data() {
@@ -33,7 +31,7 @@ export default {
     //   this.gainExperience(20);
     // }, 1500);
 
-    eventBus.$on("gainExperience", (exp) => this.gainExperience(exp));
+    this.$eventHub.$on("gainExperience", (exp) => this.gainExperience(exp));
   },
   watch: {
     progress(value) {
@@ -45,8 +43,8 @@ export default {
   methods: {
     levelUp() {
       this.$store.dispatch("setLevel");
-      eventBus.$emit("levelUp");
-      eventBus.$emit("setSnack", {
+      this.$eventHub.$emit("levelUp");
+      this.$eventHub.$emit("setSnack", {
         text: "You have leveled up!",
         color: "yellow darken-2",
       });
@@ -54,7 +52,7 @@ export default {
     },
     gainExperience(experience) {
       this.progress += experience;
-      eventBus.$emit("setSnack", {
+      this.$eventHub.$emit("setSnack", {
         text: "You have gained experience!",
         color: "yellow",
       });

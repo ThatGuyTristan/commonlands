@@ -3,7 +3,7 @@
     v-col
       v-btn.mx-1(
         :disabled="!findCondition(item.condition)"
-        @click="doSpell()"
+        @click="doSpell(item.emit)"
         :color="item.color"
         v-for="item in skills"
       ) {{ item.name }}
@@ -19,7 +19,22 @@ export default {
     wizard_skills: wizard_skills,
     warrior_skills: warrior_skills,
     ranger_skills: ranger_skills,
-    skills: [],
+    skills: [
+      {
+        name: "Attack",
+        used: false,
+        color: "red darken-1",
+        condition: "monster",
+        emit: "attack",
+      },
+      {
+        name: "Flee",
+        used: false,
+        color: "grey lighten-2",
+        condition: "monster",
+        emit: "flee",
+      },
+    ],
   }),
   computed: {
     characterClass() {
@@ -32,21 +47,26 @@ export default {
     },
   },
   methods: {
+    doSpell(string){
+      this.$eventHub.emit(string)
+    },
     findCondition(condition) {
-      if (condition == this.$store.state.encounterType) {
+      if (condition == this.$store.state.encounterType && this.$stamina > 0) {
         return true;
       }
     },
     setButtons(val) {
+      console.log(this.skills);
+      console.log(this.wizard_skills);
       switch (val) {
         case 1:
-          this.skills = this.warrior_skills;
+          this.skills = this.skills.concat(this.warrior_skills);
           break;
         case 2:
-          this.skills = this.ranger_skills;
+          this.skills = this.skills.concat(this.ranger_skills);
           break;
         case 3:
-          this.skills = this.wizard_skills;
+          this.skills = this.skills.concat(this.wizard_skills);
           break;
         default:
           console.log("invalid class");

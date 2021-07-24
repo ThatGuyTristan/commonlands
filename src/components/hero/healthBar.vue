@@ -6,8 +6,6 @@
 </template>
 
 <script>
-import { eventBus } from "@/main";
-
 export default {
   data() {
     return {
@@ -22,17 +20,17 @@ export default {
       return `${this.value} / ${this.maxHealth}`
     },
     maxHealth() {
-        return this.$store.state.maxHealth;
-      }
+      return this.$store.state.maxHealth;
+    }
   },
   created() {
-    eventBus.$on("difficultySet", () => {
+    this.$eventHub.$on("difficultySet", () => {
       this.value = this.$store.state.maxHealth;
     });
-    eventBus.$on("heal", (amount) => {
+    this.$eventHub.$on("heal", (amount) => {
       this.healDamage(amount);
     });
-    eventBus.$on("levelUp", () => {
+    this.$eventHub.$on("levelUp", () => {
       this.healDamage(5 - this.$store.state.difficulty);
     });
     setInterval(this.takeDamage, 5000);
@@ -41,7 +39,7 @@ export default {
   watch: {
     value(val) {
       if (val < 0) {
-        eventBus.$emit("setSnack", {
+        this.$eventHub.$emit("setSnack", {
           text: "You have died.",
           color: "red",
         });
@@ -65,7 +63,7 @@ export default {
       if (this.value < 0 || this.value >= this.maxHealth) {
         return;
       }
-      eventBus.$emit("setSnack", {
+      this.$eventHub.$emit("setSnack", {
         text: `You have been healed for ${heal}.`,
         color: "green",
       });

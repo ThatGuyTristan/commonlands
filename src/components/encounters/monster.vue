@@ -1,26 +1,35 @@
 <template lang="pug">
   v-row.justify-center
-    h2(:class="monster.threat") {{ monster.name }}
-    h4 {{ monster.threat }}
-    h6 {{ monster.attack }}
-    v-progress-llinear(rounded :value="currentHealthPercent" height=10 background-color="red darken-4" color="red")
+    orcPawn
 </template>
 
 <script>
-import { eventBus } from "@/main";
 import monsters from "@/assets/js/monsters";
 
 export default {
+  components: {
+    orcPawn: () => import("@/components/monsters/orcPawn")
+  },
   data: () => ({
     monsters: monsters,
-    monster: null,
+    monster: {},
+    value: 0,
   }),
+  computed: {
+    currentHealthPercent() {
+      return (this.value / this.maxHealth) * 100;
+    },
+    maxHealth() {
+      return this.monster.health;
+    }
+  },
   methods: {
     pickMonster() {
       let i = Math.round(Math.random() * this.monsters.length);
       this.monster = this.monsters[i];
-      eventBus.$emit("setEncounterString", "Monster");
-      eventBus.$emit("setSnack", {
+      this.value = this.monster.health
+      this.$eventHub.$emit("setEncounterString", "Monster");
+      this.$eventHub.$emit("setSnack", {
         text: `You have encountered a ${this.monster.name}.`,
         color: "grey",
       });

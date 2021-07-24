@@ -11,14 +11,12 @@
 </template>
 
 <script>
-import { eventBus } from "@/main";
-
 export default {
   data: () => ({
     items: [],
   }),
   created() {
-    eventBus.$on("setSnack", this.ammendObj);
+    this.$eventHub.$on("setSnack", this.ammendObj);
   },
   methods: {
     ammendObj(obj) {

@@ -16,8 +16,6 @@
 </template>
 
 <script>
-import { eventBus } from "@/main";
-
 export default {
   name: "Character",
   data: () => ({
@@ -34,13 +32,13 @@ export default {
       this.$store
         .dispatch("setCharacter", num)
         .then(
-          () => eventBus.$emit("characterSet"),
-          eventBus.$emit("gainExperience", 15)
+          () => this.$eventHub.$emit("characterSet"),
+          this.$eventHub.$emit("gainExperience", 15)
         );
     },
   },
   created() {
-    eventBus.$emit("setEncounterString", "Who are you?");
+    this.$eventHub.$emit("setEncounterString", "Who are you?");
   },
 };
 </script>

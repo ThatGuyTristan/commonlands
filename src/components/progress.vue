@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import { eventBus } from "@/main";
 import encounters from "@/assets/js/encounters";
 
 export default {
@@ -37,7 +36,7 @@ export default {
     setInterval(() => {
       this.value++;
     }, 1500);
-    eventBus.$on("finishEvent", this.addEvent);
+    this.$eventHub.$on("finishEvent", this.addEvent);
   },
 };
 </script>

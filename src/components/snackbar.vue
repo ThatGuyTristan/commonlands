@@ -4,8 +4,6 @@
 </template>
 
 <script>
-import { eventBus } from "@/main";
-
 export default {
   name: "Snackbar",
   data() {
@@ -16,7 +14,7 @@ export default {
     };
   },
   created() {
-    eventBus.$on("setSnack", this.setSnack);
+    this.$eventHub.$on("setSnack", this.setSnack);
   },
   methods: {
     setSnack: function (obj) {

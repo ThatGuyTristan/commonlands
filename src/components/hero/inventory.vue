@@ -7,7 +7,6 @@
 
 <script>
 import itemLibrary from "@/assets/js/items.js";
-import { eventBus } from "@/main";
 
 export default {
   data() {
@@ -24,7 +23,7 @@ export default {
     },
   },
   created() {
-    eventBus.$on("difficultySet", () => {
+    this.$eventHub.$on("difficultySet", () => {
       this.fillInventory();
     });
   },

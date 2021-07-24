@@ -5,24 +5,22 @@
     v-btn.ml-2(plain color="error" @click="setDifficulty(3)") Hard
 </template>
 <script>
-import { eventBus } from "@/main";
-
 export default {
   name: "Difficulty",
   methods: {
     setDifficulty(num) {
       this.$store.dispatch("setDifficulty", num).then(
-        () => eventBus.$emit("difficultySet"),
-        eventBus.$emit("setSnack", {
+        () => this.$eventHub.$emit("difficultySet"),
+        this.$eventHub.$emit("setSnack", {
           text: "You set out from Freeport",
           color: "blue",
         }),
-        eventBus.$emit("finishEvent", "freeport")
+        this.$eventHub.$emit("finishEvent", "freeport")
       );
     },
   },
   created() {
-    eventBus.$emit("setEncounterString", "Choose your difficulty");
+    this.$eventHub.$emit("setEncounterString", "Choose your difficulty");
   },
 };
 </script>

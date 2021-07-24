@@ -6,8 +6,7 @@
       v-btn.mx-2(v-for="action in actions" @click="emit(action.action, action.value)") {{ action.name }}
 </template>
 <script>
-import { eventBus } from "@/main";
-import rest from "@/assets/js/rest.js";
+import restText from "@/assets/js/rest.js";
 
 export default {
   name: "Rest",
@@ -30,14 +29,13 @@ export default {
     prompt: "",
   }),
   created() {
-    this.prompt = rest[Math.round(Math.random() * rest.length)];
-    eventBus.$emit("setEncounterString", "You take a moment to rest");
+    this.prompt = restText[Math.round(Math.random() * restText.length)];
+    this.$eventHub.$emit("setEncounterString", "You take a moment to rest");
   },
   methods: {
     emit(emit, _value) {
-      console.log(emit, "EMIT");
-      eventBus.$emit(emit, _value);
-      eventBus.$emit("finishRest");
+      this.$eventHub.$emit(emit, _value);
+      this.$eventHub.$emit("finishRest");
     },
   },
 };

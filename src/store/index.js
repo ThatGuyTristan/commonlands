@@ -81,7 +81,6 @@ export default new Vuex.Store({
       state.maxHealth += 5 - this.state.difficulty;
       state.level++;
       if (this.state.level % 3 === 0){
-        console.log("HEYO");
         state.maxStamina++;
       }
     }

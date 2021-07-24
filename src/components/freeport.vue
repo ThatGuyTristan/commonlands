@@ -9,18 +9,16 @@
 </template>
 
 <script>
-import { eventBus } from "@/main";
-
 export default {
   data: () => ({
     status: 110,
   }),
   created() {
     // setInterval(() => { this.reduceStatus(5) }, 1000)
-    eventBus.$on("finishEvent", () => {
+    this.$eventHub.$on("finishEvent", () => {
       this.reduceStatus(10);
     });
-    eventBus.$on("finishRest", () => {
+    this.$eventHub.$on("finishRest", () => {
       this.reduceStatus(10);
     })
   },
@@ -34,7 +32,7 @@ export default {
   watch: {
     status(val) {
       if (val <= 0) {
-        eventBus.$emit("setSnack", {
+        this.$eventHub.$emit("setSnack", {
           text: "Freeport has been conquered.",
           color: "red",
         });

@@ -8,8 +8,6 @@
 </template>
 
 <script>
-import { eventBus } from "@/main";
-
 export default {
   data() {
     return {
@@ -36,17 +34,20 @@ export default {
     },
   },
   created() {
-    eventBus.$on("characterSet", () => {
+    this.$eventHub.$on("characterSet", () => {
       this.value = this.$store.state.maxStamina;
     });
-    eventBus.$on("levelUp", () => {
+    this.$eventHub.$on("levelUp", () => {
       //do not gain stamina on levelUp while playing on Hard
       if (this.$store.state.difficulty != 3) this.value++;
     });
-    eventBus.$on("rest", () => {
+    this.$eventHub.$on("rest", () => {
       //adjust stamina gained by difficulty
       this.value += (5 - this.$store.state.difficulty);
     });
+    this.$eventHub.$on("spendStamina", () => {
+      this.value -= 1;
+    })
   },
 };
 </script>
