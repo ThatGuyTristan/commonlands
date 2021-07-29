@@ -48,16 +48,17 @@ export default {
   },
   methods: {
     doSpell(string){
+      console.log(string);
+      this.$stamina -= 1;
+      console.log(this.$stamina);
       this.$eventHub.emit(string)
     },
     findCondition(condition) {
-      if (condition == this.$store.state.encounterType && this.$stamina > 0) {
+      if (condition == this.$store.state.encounterType && this.$stamina) {
         return true;
       }
     },
     setButtons(val) {
-      console.log(this.skills);
-      console.log(this.wizard_skills);
       switch (val) {
         case 1:
           this.skills = this.skills.concat(this.warrior_skills);

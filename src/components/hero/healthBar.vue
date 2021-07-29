@@ -33,7 +33,7 @@ export default {
     this.$eventHub.$on("levelUp", () => {
       this.healDamage(5 - this.$store.state.difficulty);
     });
-    setInterval(this.takeDamage, 5000);
+    //setInterval(this.takeDamage, 5000);
     // setInterval(this.healDamage, 6000);
   },
   watch: {

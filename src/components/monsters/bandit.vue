@@ -17,15 +17,15 @@ export default {
   mixins: [skillTests],
   data: () => ({
     name: "an orc knight",
-    maxHealth: 8,
-    health: 8,
+    maxHealth: 80,
+    health: 80,
     accuracy: 60,
     resistance: 60,
     coerced: false,
     shaken: false,
   }),
   mounted() {
-    // this.$eventHub.on("attack", this.attack);
+    this.$eventHub.on("attack", this.attack);
     this.$eventHub.on("coerce", this.coerceResponse);
     this.$eventHub.on("shout", this.shoutResponse);
     this.$eventHub.on("disarm", this.disarmRespnse);
@@ -39,9 +39,6 @@ export default {
     },
   },
   methods: {
-    spellSuccessful() {
-      return this.rolld100 > this.resistance;
-    },
     coerceResponse() {
       console.log("INSIDE COERECE");
       if (this.spellSuccessful()) {
@@ -68,10 +65,10 @@ export default {
     },
     lightningResponse() {
       console.log("INSIDE lightning");
-      if (this.spellSuccessful(this.resistance)) {
-        console.log("lightning strike damages OK and lowers accuracy");
+      if (this.spellSuccessful()) {
+        console.log("lightning strike damages giant and lowers accuracy");
       } else {
-        console.log("OK resisted thunder");
+        console.log("bandit resisted thunder");
       }
     },
   },

@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     v-card(v-if="coerced")
-      h3 The orc knight is coerced
+      h3 The giant is coerced
     v-card(v-else)
       v-card-title
         .title {{ name }}
@@ -11,24 +11,24 @@
 </template>
 
 <script>
-import skillTests from "@/mixins/skillTests";
+import skillTests from "@/mixins/skillTests"
 
 export default {
   mixins: [skillTests],
   data: () => ({
-    name: "an orc knight",
-    maxHealth: 8,
-    health: 8,
-    accuracy: 60,
-    resistance: 60,
+    name: "a hill giant",
+    maxHealth: 20,
+    health: 20,
+    accuracy: 30,
+    resistance: 80,
     coerced: false,
     shaken: false,
   }),
   mounted() {
-    // this.$eventHub.on("attack", this.attack);
+    this.$eventHub.on("attack", this.attack);
     this.$eventHub.on("coerce", this.coerceResponse);
     this.$eventHub.on("shout", this.shoutResponse);
-    this.$eventHub.on("disarm", this.disarmRespnse);
+    this.$eventHub.on("disarm", this.disarmResponse);
     this.$eventHub.on("lightning", this.lightningResponse);
   },
   watch: {
@@ -39,21 +39,18 @@ export default {
     },
   },
   methods: {
-    spellSuccessful() {
-      return this.rolld100 > this.resistance;
-    },
     coerceResponse() {
       console.log("INSIDE COERECE");
-      if (this.spellSuccessful()) {
+      if (this.spellSuccessful(this.resistance)) {
         this.coerced = true;
       } else {
-        console.log("monster attacks with bonus");
+        console.log("giant attacks with bonus");
       }
     },
     shoutResponse() {
       console.log("INSIDE SHOUT RESPONSE");
-      if (this.spellSuccessful()) {
-        console.log("Shout successfull, monster is shaken");
+      if (this.spellSuccessful(this.resistance)) {
+        console.log("Shout successfull, giant is shaken");
       } else {
         console.log("Shout failed!");
       }
@@ -61,17 +58,19 @@ export default {
     disarmResponse() {
       console.log("INSIDE DISARM");
       if (this.spellSuccessful()) {
-        console.log("monster disarmed! Accuracy lowered!");
+        console.log("giant disarmed! Accuracy lowered!");
       } else {
-        console.log("monster attacks");
+        console.log("giant attacks");
       }
     },
     lightningResponse() {
       console.log("INSIDE lightning");
       if (this.spellSuccessful(this.resistance)) {
-        console.log("lightning strike damages OK and lowers accuracy");
+        this.health -= 10;
+        this.accuracy -= 10;
+        console.log("lightning strike damages giant and lowers accuracy");
       } else {
-        console.log("OK resisted thunder");
+        console.log("giant resisted lightning");
       }
     },
   },

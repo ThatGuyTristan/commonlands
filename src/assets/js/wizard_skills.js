@@ -4,7 +4,7 @@ const wizard_skills = [
     used: false,
     color: "blue",
     condition: "monster",
-    emit: "shockOfLightning",
+    emit: "lightning",
   },
   {
     name: "Shadowstep",

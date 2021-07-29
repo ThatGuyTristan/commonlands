@@ -1,6 +1,8 @@
 <template lang="pug">
   div
-    v-card
+    v-card(v-if="coerced")
+      h3 {{ name }} is coerced
+    v-card(v-else)
       v-card-title
         .title {{ name }}
         v-spacer
@@ -9,18 +11,25 @@
 </template>
 
 <script>
+import skillTests from "@/mixins/skillTests"
+
 export default {
+  mixins: [skillTests],
   data: () => ({
-    name: "an orcling",
-    maxHealth: 6,
-    health: 6,
-    accuracy: 30,
-    resistance: 30,
+    name: "an orc pawn",
+    maxHealth: 3,
+    health: 3,
+    accuracy: 40,
+    resistance: 15,
+    coerced: false,
+    shaken: false,
   }),
-  created() {
-    this.$eventHub.on("coerce", this.coerce);
-    this.$eventHub.on("attack", this.coerce);
-    this.$eventHub.on("shockOfLightning", this.shockOfLightning);
+  mounted() {
+    //this.$eventHub.on("attack", this.attack);
+    this.$eventHub.on("coerce", this.coerceResponse);
+    this.$eventHub.on("shout", this.shoutResponse);
+    this.$eventHub.on("disarm", this.disarmRespnse);
+    this.$eventHub.on("lightning", this.lightningResponse);
   },
   watch: {
     health(value) {
@@ -30,20 +39,38 @@ export default {
     },
   },
   methods: {
-    coerce() {
-      this.$eventHub.emit("spendStamina")
+    coerceResponse() {
       console.log("INSIDE COERECE");
-      if (this.rolld100 > this.resistance) {
-        console.log("YEAH");
+      if (this.spellSuccessful(this.resistance)) {
+        this.coerced = true;
+      } else {
+        console.log("monster attacks with bonus");
       }
     },
-    shockOfLightning() {
-      this.$eventHub.emit("spendStamina")
-      this.$eventHub.emit("setSnack", {
-        text: `Lightning bursts from your palm and tears into ${this.name}`,
-        color: "orange",
-      });
-      this.health -= 10;
+    shoutResponse() {
+      console.log("INSIDE SHOUT RESPONSE");
+      if (this.spellSuccessful()) {
+        console.log("Shout successfull, monster is shaken");
+      } else {
+        console.log("Shout failed!");
+      }
+    },
+    disarmResponse() {
+      console.log("INSIDE DISARM");
+      if (this.spellSuccessful()) {
+        console.log("monster disarmed! Accuracy lowered!");
+      } else {
+        console.log("monster attacks");
+      }
+    },
+    lightningResponse() {
+      console.log("INSIDE lightning");
+      if (this.spellSuccessful(this.resistance)) {
+        this.health -= 10;
+        console.log("lightning strikes the orc pawn and lowers accuracy");
+      } else {
+        console.log("orc pawn resisted thunder");
+      }
     },
   },
 };
