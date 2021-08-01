@@ -21,6 +21,7 @@ export default {
     health: 3,
     accuracy: 40,
     resistance: 15,
+    courage: 0,
     coerced: false,
     shaken: false,
   }),
@@ -49,8 +50,8 @@ export default {
     },
     shoutResponse() {
       console.log("INSIDE SHOUT RESPONSE");
-      if (this.spellSuccessful()) {
-        console.log("Shout successfull, monster is shaken");
+      if (this.spellSuccessful(this.courage)) {
+        this.$eventHub.$emit("setSnack", "The orc pawn flees from your fury!")
       } else {
         console.log("Shout failed!");
       }
