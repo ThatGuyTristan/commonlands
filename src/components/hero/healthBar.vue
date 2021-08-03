@@ -33,6 +33,7 @@ export default {
     this.$eventHub.$on("levelUp", () => {
       this.healDamage(5 - this.$store.state.difficulty);
     });
+    this.$eventHub.$on("damagePlayer", this.takeDamage())
     //setInterval(this.takeDamage, 5000);
     // setInterval(this.healDamage, 6000);
   },
@@ -52,11 +53,11 @@ export default {
     },
   },
   methods: {
-    takeDamage() {
+    takeDamage(damage) {
       if (this.value < 0) {
         return;
       }
-      this.value -= 1;
+      this.value -= damage;
     },
     healDamage(heal) {
       console.log("HEAL", heal);
