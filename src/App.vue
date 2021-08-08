@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style scoped>
-#mainTitle{
+#mainTitle {
   font-family: "BlackCastle";
 }
 
@@ -47,12 +47,12 @@ export default {
 
 @font-face {
   font-family: "oldEnglish";
-  src: url("./assets/fonts/Old_Englished_Boots.ttf")
+  src: url("./assets/fonts/Old_Englished_Boots.ttf");
 }
 
 @font-face {
   font-family: "BlackCastle";
-  src: url("./assets/fonts/BlackCastle.ttf")
+  src: url("./assets/fonts/BlackCastle.ttf");
 }
 
 @font-face {

@@ -15,10 +15,10 @@
 </template>
 
 <script>
-import Logger from "@/components/logger"
+import Logger from "@/components/logger";
 import Encounter from "@/components/encounter";
 import Hero from "@/components/Hero";
-import Freeport from "@/components/freeport"
+import Freeport from "@/components/freeport";
 import JourneyProgress from "@/components/progress";
 
 export default {

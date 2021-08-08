@@ -50,40 +50,40 @@ export default new Vuex.Store({
           state.maxHealth += 12;
           state.maxStamina = 4;
           state.character = value;
-          state.characterClass = "Warrior"
+          state.characterClass = "Warrior";
           break;
         //ranger
         case 2:
           state.maxHealth += 10;
           state.maxStamina = 5;
           state.character = value;
-          state.characterClass = "Ranger"
+          state.characterClass = "Ranger";
           break;
         //wizard
         case 3:
           state.maxHealth += 8;
           state.maxStamina = 3;
           state.character = value;
-          state.characterClass = "Wizard"
+          state.characterClass = "Wizard";
           break;
         default:
           console.log("Character error");
       }
       state.encounterType = "difficulty";
     },
-    setName(state, value){
+    setName(state, value) {
       state.name = value;
     },
-    setEncounter(state, value){
-      state.encounterType = value
+    setEncounter(state, value) {
+      state.encounterType = value;
     },
-    levelUp(state){
+    levelUp(state) {
       state.maxHealth += 5 - this.state.difficulty;
       state.level++;
-      if (this.state.level % 3 === 0){
+      if (this.state.level % 3 === 0) {
         state.maxStamina++;
       }
-    }
+    },
   },
   actions: {
     setDifficulty(context, value) {
@@ -93,14 +93,14 @@ export default new Vuex.Store({
       context.commit("setCharacter", value);
     },
     setLevel(context) {
-      context.commit("levelUp")
+      context.commit("levelUp");
     },
     setName(context, value) {
-      context.commit("setName", value)
+      context.commit("setName", value);
     },
-    setEncounter(context, value){
-      context.commit("setEncounter", value)
-    }
+    setEncounter(context, value) {
+      context.commit("setEncounter", value);
+    },
   },
   modules: {},
   getters: {

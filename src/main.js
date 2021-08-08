@@ -3,13 +3,13 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
-import EventHub from 'vue-event-hub';
+import EventHub from "vue-event-hub";
 
 Vue.prototype.$stamina = 3;
 
 Vue.config.productionTip = false;
 
-Vue.use(EventHub)
+Vue.use(EventHub);
 
 new Vue({
   router,

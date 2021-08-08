@@ -18,7 +18,7 @@ const monsters = [
     id: 4,
     name: "a hill giant",
     threat: "red",
-  }
+  },
 ];
 
 export default monsters;

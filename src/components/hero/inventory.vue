@@ -36,7 +36,7 @@ export default {
       this.value.push(item);
     },
     fillInventory() {
-      let quantity = (4 - this.$store.state.difficulty);
+      let quantity = 4 - this.$store.state.difficulty;
       let n = 0;
       while (n < quantity) {
         let item = this.findItem();

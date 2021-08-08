@@ -8,15 +8,14 @@
 <script>
 export default {
   computed: {
-    characterLevel(){
+    characterLevel() {
       return this.$store.state.level;
-    }
+    },
   },
   methods: {
-    sneak(){},
-    disarm(){},
-    forage(){},
-  }
-}
-
+    sneak() {},
+    disarm() {},
+    forage() {},
+  },
+};
 </script>

@@ -10,10 +10,9 @@
 <script>
 export default {
   methods: {
-    takeRest(){
-      this.$store.dispatch("setEncounter", "rest")
-    }
-  }
-
-}
+    takeRest() {
+      this.$store.dispatch("setEncounter", "rest");
+    },
+  },
+};
 </script>

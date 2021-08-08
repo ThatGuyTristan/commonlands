@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import skillTests from "@/mixins/skillTests"
+import skillTests from "@/mixins/skillTests";
 
 export default {
   mixins: [skillTests],

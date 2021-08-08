@@ -25,7 +25,7 @@ export default {
     Travel: () => import("./encounters/travel.vue"),
     Event: () => import("./encounters/event.vue"),
     Rest: () => import("./encounters/rest.vue"),
-    Prompt: () => import("./encounters/prompt.vue")
+    Prompt: () => import("./encounters/prompt.vue"),
   },
   data: () => ({
     encounterString: "Choose your difficulty",
@@ -38,16 +38,16 @@ export default {
   },
   created() {
     this.$eventHub.$on("setEncounterString", this.setString);
-    this.$eventHub.$on("finishRest", this.setEncounter)
-    this.$eventHub.$on("finishEvent", this.setRest)
+    this.$eventHub.$on("finishRest", this.setEncounter);
+    this.$eventHub.$on("finishEvent", this.setRest);
   },
   methods: {
-    setRest(){
-      this.$store.dispatch("setEncounter", "prompt")
+    setRest() {
+      this.$store.dispatch("setEncounter", "prompt");
     },
-    setEncounter(){
-      let encounters = ["monster"]
-      this.$store.dispatch("setEncounter", encounters[0])
+    setEncounter() {
+      let encounters = ["monster"];
+      this.$store.dispatch("setEncounter", encounters[0]);
     },
     setString(string) {
       this.encounterString = string;

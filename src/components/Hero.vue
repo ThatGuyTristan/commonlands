@@ -25,18 +25,18 @@ export default {
     Skills: () => import("@/components/hero/skills"),
   },
   data: () => ({
-    displayName: null
+    displayName: null,
   }),
-  computed:{
+  computed: {
     characterName() {
-      return this.$store.state.name
+      return this.$store.state.name;
     },
   },
   watch: {
-    characterName(val){
+    characterName(val) {
       this.displayName = val;
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>

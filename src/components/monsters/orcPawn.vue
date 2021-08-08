@@ -11,10 +11,11 @@
 </template>
 
 <script>
-import skillTests from "@/mixins/skillTests"
+import skillTests from "@/mixins/skillTests";
+import setSnack from "@/mixins/setSnack";
 
 export default {
-  mixins: [skillTests],
+  mixins: [skillTests, setSnack],
   data: () => ({
     name: "an orc pawn",
     maxHealth: 3,
@@ -42,7 +43,7 @@ export default {
   methods: {
     coerceResponse() {
       console.log("INSIDE COERECE");
-      if (this.spellSuccessful(this.resistance)) {
+      if (this.spellSuccessful(this.coerceResistance)) {
         this.coerced = true;
       } else {
         console.log("monster attacks with bonus");
@@ -50,27 +51,34 @@ export default {
     },
     shoutResponse() {
       console.log("INSIDE SHOUT RESPONSE");
-      if (this.spellSuccessful(this.courage)) {
-        this.$eventHub.$emit("setSnack", "The orc pawn flees from your fury!")
+      if (this.spellSuccessful(this.shoutResistance)) {
+        this.setSnack("The orc pawn flees from your fury!", "orange");
+        this.$eventHub.$emit("finishEvent", "monster");
       } else {
+        this.setSnack(
+          "Your shout fetters off into a burp. The orc pawn is amused."
+        );
         console.log("Shout failed!");
       }
     },
     disarmResponse() {
       console.log("INSIDE DISARM");
-      if (this.spellSuccessful()) {
-        console.log("monster disarmed! Accuracy lowered!");
+      if (this.spellSuccessful(10)) {
+        this.setSnack(
+          "You knock the orc pawn's weapon from its hands!",
+          "orange"
+        );
+        this.accuracy = 0;
       } else {
         console.log("monster attacks");
       }
     },
     lightningResponse() {
-      console.log("INSIDE lightning");
       if (this.spellSuccessful(this.resistance)) {
+        this.setSnack("Lightning scorches the skin of the orc pawn!", "orange");
         this.health -= 10;
-        console.log("lightning strikes the orc pawn and lowers accuracy");
       } else {
-        console.log("orc pawn resisted thunder");
+        this.setSnack("The orc pawn dives under your lightning bolt.", "grey");
       }
     },
   },

@@ -1,13 +1,12 @@
 export default {
   methods: {
-    rolld100(){
+    rolld100() {
       return Math.round(Math.random() * 100);
     },
-    spellSuccessful(resistance){
-      let roll = this.rolld100()
-      console.log(resistance, roll)
-      return roll > resistance;
+    spellSuccessful(target = 40) {
+      let roll = this.rolld100();
+      console.log(target, roll);
+      return roll > target;
     },
   },
-
-}
+};

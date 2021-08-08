@@ -20,7 +20,7 @@ export default {
     });
     this.$eventHub.$on("finishRest", () => {
       this.reduceStatus(10);
-    })
+    });
   },
   methods: {
     reduceStatus(num) {

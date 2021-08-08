@@ -47,11 +47,11 @@ export default {
     },
   },
   methods: {
-    doSpell(string){
+    doSpell(string) {
       console.log(string);
       this.$stamina -= 1;
       console.log(this.$stamina);
-      this.$eventHub.emit(string)
+      this.$eventHub.emit(string);
     },
     findCondition(condition) {
       if (condition == this.$store.state.encounterType && this.$stamina) {

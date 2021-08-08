@@ -43,11 +43,11 @@ export default {
     });
     this.$eventHub.$on("rest", () => {
       //adjust stamina gained by difficulty
-      this.value += (5 - this.$store.state.difficulty);
+      this.value += 5 - this.$store.state.difficulty;
     });
     this.$eventHub.$on("spendStamina", () => {
       this.value -= 1;
-    })
+    });
   },
 };
 </script>

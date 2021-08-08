@@ -23,7 +23,7 @@ export default {
   }),
   methods: {
     addEvent(event) {
-      console.log("Add event", event)
+      console.log("Add event", event);
       this.events.push(event);
     },
   },

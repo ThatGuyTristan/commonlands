@@ -6,11 +6,11 @@
 </template>
 
 <script>
-import texts from "@/assets/js/introduction.js"
+import texts from "@/assets/js/introduction.js";
 
 export default {
   data: () => ({
-    introText: texts
-  })
-}
+    introText: texts,
+  }),
+};
 </script>
