@@ -1,13 +1,18 @@
 <template lang="pug">
   div
-    v-card(v-if="coerced")
-      h3 The giant is coerced
-    v-card(v-else)
+    v-card
       v-card-title
         .title {{ name }}
         v-spacer
         .caption {{ health }} / {{ maxHealth }}
       v-card-text
+        div
+          h3(v-if="coerced") The giant is under your coercion.
+          h3(v-else) The giant scowls at you, ready to attack!
+      v-card-actions(v-if="coerced")
+        v-btn Send it to help Freeport
+        v-spacer
+        v-btn Tell it to drown itself in Lake Freeport
 </template>
 
 <script>
@@ -24,7 +29,7 @@ export default {
     coerced: false,
     shaken: false,
   }),
-  mounted() {
+  created() {
     this.$eventHub.on("attack", this.attack);
     this.$eventHub.on("coerce", this.coerceResponse);
     this.$eventHub.on("shout", this.shoutResponse);

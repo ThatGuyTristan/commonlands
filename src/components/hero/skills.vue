@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     doSpell(string) {
-      console.log(string);
+      console.log("STRING?", string);
       this.$stamina -= 1;
       console.log(this.$stamina);
       this.$eventHub.emit(string);

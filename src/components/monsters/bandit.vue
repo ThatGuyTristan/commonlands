@@ -1,13 +1,18 @@
 <template lang="pug">
   div
-    v-card(v-if="coerced")
-      h3 The orc bandit is coerced
-    v-card(v-else)
+    v-card
       v-card-title
         .title {{ name }}
         v-spacer
         .caption {{ health }} / {{ maxHealth }}
       v-card-text
+        div
+          h3(v-if="coerced") The bandit is under your coercion.
+          h3(v-else) The bandit scowls at you, ready to attack!
+      v-card-actions(v-if="coerced")
+        v-btn Order him to let you pass. 
+        v-spacer
+        v-btn Tell him to empty his pockets.
 </template>
 
 <script>
@@ -22,7 +27,7 @@ export default {
     health: 8,
     accuracy: 60,
     coerceResistance: 30,
-    shoutResistancec: 80,
+    shoutResistance: 80,
     coerced: false,
     shaken: false,
   }),
@@ -57,7 +62,8 @@ export default {
       }
     },
     coerceResponse() {
-      if (this.spellSuccessful(this.resistance)) {
+      console.log("uuhhhh");
+      if (this.spellSuccessful(this.coerceResistance)) {
         this.setSnack(
           "You coerce the bandit into giving up an item.",
           "orange"

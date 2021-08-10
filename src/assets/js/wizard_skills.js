@@ -18,7 +18,7 @@ const wizard_skills = [
     used: false,
     color: "red",
     condition: "monster",
-    emit: "loot",
+    emit: "coerce",
   },
 ];
 
