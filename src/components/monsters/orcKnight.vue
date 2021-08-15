@@ -12,9 +12,10 @@
 
 <script>
 import skillTests from "@/mixins/skillTests";
+import setSnack from "@/mixins/setSnack";
 
 export default {
-  mixins: [skillTests],
+  mixins: [skillTests, setSnack],
   data: () => ({
     name: "an orc knight",
     maxHealth: 8,
@@ -25,6 +26,7 @@ export default {
     shaken: false,
   }),
   mounted() {
+    this.setSnack("You encounter an orc pawn!", "grey");
     // this.$eventHub.on("attack", this.attack);
     this.$eventHub.on("coerce", this.coerceResponse);
     this.$eventHub.on("shout", this.shoutResponse);

@@ -27,6 +27,7 @@ export default {
     shaken: false,
   }),
   mounted() {
+    this.setSnack("You encounter an orc pawn!", "grey");
     //this.$eventHub.on("attack", this.attack);
     this.$eventHub.on("coerce", this.coerceResponse);
     this.$eventHub.on("shout", this.shoutResponse);
