@@ -2,7 +2,7 @@
   v-row(no-gutters)
     h6 Health:
     v-progress-linear.mb-2(rounded :value="currentHealthPercent" height=10 background-color="red darken-4" color="green")
-      .text-caption.white--text {{ captionText }}
+      .text-caption.white--text(v-if="!isNaN(value)") {{ captionText }}
 </template>
 
 <script>
