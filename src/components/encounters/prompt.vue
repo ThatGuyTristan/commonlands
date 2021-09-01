@@ -9,13 +9,16 @@
 
 <script>
 export default {
+  created() {
+    this.$eventHub.$emit("setEncounterString", "Do you go on?");
+  },
   methods: {
     takeRest() {
       this.$store.dispatch("setEncounter", "rest");
     },
     skipRest() {
       this.$store.dispatch("setEncounter", "monster");
-    }
+    },
   },
 };
 </script>

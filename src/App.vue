@@ -3,10 +3,8 @@
     v-app-bar(app dark)
       div.d-flex.align-center
         h1(id="mainTitle") the Commonlands
-
       v-spacer
       h3 A VueJS Playground App
-
     v-main(:style="backgroundStyle")
       router-view
     Snackbar

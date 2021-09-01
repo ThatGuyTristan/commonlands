@@ -23,6 +23,7 @@ export default {
   }),
   created() {
     this.monsterId = Math.ceil(Math.random() * 4);
+    this.$eventHub.$emit("setEncounterString", "You encounter a monster!");
   },
 };
 </script>

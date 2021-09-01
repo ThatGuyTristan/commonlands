@@ -10,7 +10,8 @@ export default {
   methods: {
     setDifficulty(num) {
       this.$store.dispatch("setDifficulty", num).then(
-        () => this.$eventHub.$emit("difficultySet"),
+        () => this.$eventHub.$emit("gainExperience", 100 - num * 20),
+        this.$eventHub.$emit("difficultySet"),
         this.$eventHub.$emit("setSnack", {
           text: "You set out from Freeport",
           color: "blue",

@@ -46,8 +46,11 @@ export default {
       this.$store.dispatch("setEncounter", "prompt");
     },
     setEncounter() {
-      let encounters = ["monster"];
-      this.$store.dispatch("setEncounter", encounters[0]);
+      let encounters = ["monsters", "event", "travel"];
+      this.$store.dispatch(
+        "setEncounter",
+        encounters[Math.round(Math.random() * encounters.length)]
+      );
     },
     setString(string) {
       this.encounterString = string;

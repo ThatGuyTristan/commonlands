@@ -18,7 +18,6 @@ export default {
   },
   methods: {
     setSnack: function (obj) {
-      // console.log(obj);
       this.message = obj.text;
       this.color = obj.color;
       this.show = true;
