@@ -3,6 +3,7 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
+// Need to refactor this into separate stores. Some of the logic here isn't appropriate to keep in a store.
 export default new Vuex.Store({
   state: {
     name: "",

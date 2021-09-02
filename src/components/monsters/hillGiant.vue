@@ -30,7 +30,7 @@ export default {
     shaken: false,
   }),
   created() {
-    this.$eventHub.on("attack", this.attack);
+    this.$eventHub.on("attack", this.attackResponse);
     this.$eventHub.on("coerce", this.coerceResponse);
     this.$eventHub.on("shout", this.shoutResponse);
     this.$eventHub.on("disarm", this.disarmResponse);

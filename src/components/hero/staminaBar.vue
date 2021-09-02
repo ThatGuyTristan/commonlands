@@ -12,7 +12,7 @@ export default {
   data() {
     return {
       label: "Stamina",
-      value: 0,
+      value: this.$stamina,
     };
   },
   methods: {

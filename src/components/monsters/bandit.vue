@@ -10,14 +10,15 @@
           h3(v-if="coerced") The bandit is under your coercion.
           h3(v-else) The bandit scowls at you, ready to attack!
       v-card-actions(v-if="coerced")
-        v-btn Order him to let you pass. 
+        v-btn(@click="youShallPass") Order him to let you pass. 
         v-spacer
-        v-btn Tell him to empty his pockets.
+        v-btn(@click="emptyPockets") Tell him to empty his pockets.
 </template>
 
 <script>
 import skillTests from "@/mixins/skillTests";
 import setSnack from "@/mixins/setSnack";
+import items from "@/assets/js/items"
 
 export default {
   mixins: [skillTests, setSnack],
@@ -35,7 +36,7 @@ export default {
     this.$eventHub.on("attack", this.attack);
     this.$eventHub.on("coerce", this.coerceResponse);
     this.$eventHub.on("shout", this.shoutResponse);
-    this.$eventHub.on("disarm", this.disarmRespnse);
+    this.$eventHub.on("disarm", this.disarmResponse);
     this.$eventHub.on("lightning", this.lightningResponse);
   },
   watch: {
@@ -46,6 +47,15 @@ export default {
     },
   },
   methods: {
+    youShallPass(){
+      this.$eventHub.$emit("setSnack", { text: "The bandit steps aside and lets you pass.", color: "orange" })
+      this.$eventHub.$emit("finishEvent", "monster");
+    },
+    emptyPockets(){
+      let item = items[Math.round(Math.random() * items.length)]
+      this.$eventHub.$emit("loot", item);
+      this.$eventHub.$emit("setSnack", { text: `The bandit hands you a ${item.name}`, color: "green" })
+    },
     attack(value = 4, modifier = 0) {
       if (this.shaken) {
         this.setSnack("The bandit is shaken and cannot attack", "grey");

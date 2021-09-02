@@ -26,6 +26,9 @@ export default {
     this.$eventHub.$on("difficultySet", () => {
       this.fillInventory();
     });
+    this.$eventHub.$on("loot", (loot) => { 
+      this.addItemtoInventory(loot)
+    })
   },
   methods: {
     findItem() {
