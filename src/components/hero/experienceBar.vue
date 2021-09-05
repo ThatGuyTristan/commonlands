@@ -9,7 +9,6 @@
       color="yellow")
       template(v-slot:default="{ value }")
         .text-caption.black--text Level {{ level }}
-
 </template>
 
 <script>

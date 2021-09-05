@@ -17,7 +17,6 @@ export default {
   },
   name: "JourneyProgress",
   data: () => ({
-    value: 0,
     events: [],
     encounters: encounters,
   }),
@@ -33,10 +32,14 @@ export default {
     },
   },
   created() {
-    setInterval(() => {
-      this.value++;
-    }, 1500);
-    this.$eventHub.$on("finishEvent", this.addEvent);
-  },
-};
+    this.$eventHub.$on("finishEvent", (event) => { this.addEvent(event)  }),
+    this.$eventHub.$on("escorted", (event) => { 
+      let steps = 4 - this.$store.state.difficulty
+        for(let i = 0; i == steps; i++){
+          console.log(i, event);
+          this.addEvent(event)
+        }
+    })
+  }
+}
 </script>

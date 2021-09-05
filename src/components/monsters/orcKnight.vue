@@ -8,6 +8,10 @@
         v-spacer
         .caption {{ health }} / {{ maxHealth }}
       v-card-text
+      v-card-actions(v-if="coerced")
+        v-btn(@click="skewer")
+        v-spacer
+        v-btn(@click="escort")
 </template>
 
 <script>
@@ -41,6 +45,14 @@ export default {
     },
   },
   methods: {
+    skewer(){
+      this.$eventHub.$emit("setSnack", { text: "You order the orc to impale itself!", color: "orange" })
+      this.health = 0;
+    },
+    escort(){
+      this.$eventHub.$emit("setSnack", { text: "You order the orc to escort you safely.", color: "green" })
+      this.$eventHub.$emit("escorted");
+    },
     spellSuccessful() {
       return this.rolld100 > this.resistance;
     },

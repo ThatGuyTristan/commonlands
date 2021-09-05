@@ -28,7 +28,7 @@ export default {
     health: 8,
     accuracy: 60,
     coerceResistance: 30,
-    shoutResistance: 80,
+    shoutResistance: 60,
     coerced: false,
     shaken: false,
   }),
@@ -58,7 +58,7 @@ export default {
     },
     attack(value = 4, modifier = 0) {
       if (this.shaken) {
-        this.setSnack("The bandit is shaken and cannot attack", "grey");
+        this.$eventHub.$emit({ text: "The bandit is shaken and cannot attack", color: "grey"});
         return;
       }
 
@@ -74,10 +74,6 @@ export default {
     coerceResponse() {
       console.log("uuhhhh");
       if (this.spellSuccessful(this.coerceResistance)) {
-        this.setSnack(
-          "You coerce the bandit into giving up an item.",
-          "orange"
-        );
         this.coerced = true;
       } else {
         this.attack(_0, 2);

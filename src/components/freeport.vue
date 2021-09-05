@@ -21,13 +21,19 @@ export default {
     this.$eventHub.$on("finishRest", () => {
       this.reduceStatus(10);
     });
+    this.$eventHub.$on("reinforceFreeport", (val) => {
+      this.increaseStatus(val);
+    })
   },
   methods: {
-    reduceStatus(num) {
+    reduceStatus(val) {
       if (this.status > 0) {
-        this.status -= num;
+        this.status -= val;
       }
     },
+    increaseStatis(val){
+      this.status += val;
+    }
   },
   watch: {
     status(val) {

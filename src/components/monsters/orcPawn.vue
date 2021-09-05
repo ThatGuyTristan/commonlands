@@ -8,6 +8,10 @@
         v-spacer
         .caption {{ health }} / {{ maxHealth }}
       v-card-text
+      v-card-actions(v-if="coerced")
+        v-btn(@click="sendToFreeport")
+        v-spacer
+        v-btn(@click="protect")
 </template>
 
 <script>
@@ -42,6 +46,13 @@ export default {
     },
   },
   methods: {
+    sendToFreeport(){
+      this.$eventHub.$emit("setSnack", { text: "You send the orc pawn against the Dark Elven camps! You don't suspect he'll live very long.", color: "grey" })
+    },
+    protect(){
+      this.$eventHub.$emit("addProtector", 4)
+      this.$eventHub.$emit("setSnack", { text: "You order the orc pawn to follow you!", color: "green" })
+    },
     coerceResponse() {
       console.log("INSIDE COERECE");
       if (this.spellSuccessful(this.coerceResistance)) {
