@@ -6,13 +6,16 @@
         h5.pl-3 {{ $store.state.characterClass}}
     v-row
       v-col(cols="4")
-        ExperienceBar
-        HealthBar
-        StaminaBar
+        div.stat
+          HealthBar
+        div.stat
+          ExperienceBar
+        div.stat
+          StaminaBar
       v-col(cols="4")
-        Inventory
       v-col(cols="4")
         Skills
+        Inventory
 </template>
 
 <script>
@@ -42,5 +45,9 @@ export default {
 <style scoped>
 .main {
   border: 1px solid #000;
+}
+
+.stat {
+  height: 50px;
 }
 </style>

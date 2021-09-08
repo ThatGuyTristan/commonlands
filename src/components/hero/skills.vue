@@ -1,12 +1,14 @@
 <template lang="pug">
   v-row(no-gutters)
-    v-col
-      v-btn.mx-1(
-        :disabled="!findCondition(item.condition)"
-        @click="doSpell(item.emit)"
-        :color="item.color"
-        v-for="item in skills"
-      ) {{ item.name }}
+    v-card.ma-2(
+      :disabled="!findCondition(item.condition)"
+      @click="doSpell(item.emit)"
+      :color="item.color"
+      v-for="item in skills"
+      height="80px"
+      width="80px"
+    ) 
+      v-container.px-auto(align="center") {{ item.name }}
 </template>
 
 <script>

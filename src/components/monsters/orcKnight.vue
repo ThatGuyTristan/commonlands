@@ -1,17 +1,18 @@
 <template lang="pug">
   div
-    v-card(v-if="coerced")
-      h3 The orc knight is coerced
-    v-card(v-else)
+    v-card
       v-card-title
         .title {{ name }}
         v-spacer
         .caption {{ health }} / {{ maxHealth }}
       v-card-text
+        div
+          h3(v-if="coerced") The Orc Knight is under your coercion
+          h3(V-else) The orc scowls at you, ready to attack!
       v-card-actions(v-if="coerced")
-        v-btn(@click="skewer")
+        v-btn(@click="skewer") Impale itself
         v-spacer
-        v-btn(@click="escort")
+        v-btn(@click="escort") Escort you forward
 </template>
 
 <script>
@@ -51,10 +52,8 @@ export default {
     },
     escort(){
       this.$eventHub.$emit("setSnack", { text: "You order the orc to escort you safely.", color: "green" })
-      this.$eventHub.$emit("escorted");
-    },
-    spellSuccessful() {
-      return this.rolld100 > this.resistance;
+      this.$eventHub.$emit("escorted", "escorted");
+      this.health = -0;
     },
     coerceResponse() {
       console.log("INSIDE COERECE");

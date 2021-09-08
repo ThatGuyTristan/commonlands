@@ -34,11 +34,11 @@ export default {
   created() {
     this.$eventHub.$on("finishEvent", (event) => { this.addEvent(event)  }),
     this.$eventHub.$on("escorted", (event) => { 
-      let steps = 4 - this.$store.state.difficulty
-        for(let i = 0; i == steps; i++){
-          console.log(i, event);
-          this.addEvent(event)
-        }
+      let steps = 4 - this.$store.state.difficulty;
+      for(let i = 0; i == steps; i++){
+        console.log(i, event, "event?");
+        this.addEvent(event)
+      }
     })
   }
 }

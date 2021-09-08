@@ -32,8 +32,7 @@ export default {
       this.$store
         .dispatch("setCharacter", num)
         .then(
-          () => this.$eventHub.$emit("characterSet"),
-          this.$eventHub.$emit("gainExperience", 15)
+          () => this.$eventHub.$emit("characterSet", num),
         );
     },
   },

@@ -46,7 +46,7 @@ export default {
           break;
         case "escorted":
           this.color = "brown";
-          this.icon = "walk";
+          this.icon = "mdi-walk";
           break;
         case "highkeep":
           this.color = "black";

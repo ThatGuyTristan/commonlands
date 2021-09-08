@@ -1,11 +1,11 @@
 <template lang="pug">
   v-row(no-gutters)
-    h6.ml-4 Freeport Status:
     v-progress-linear.my-2.mx-16(
       :value="status"
-      height="5"
+      height="35"
       background-color="orange darken-2"
-      color="grey")
+      color="grey"
+      ) Freeport
 </template>
 
 <script>

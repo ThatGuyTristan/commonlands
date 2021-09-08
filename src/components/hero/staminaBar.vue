@@ -1,7 +1,7 @@
 <template lang="pug">
   v-row(no-gutters)
     h6.mr-2 {{ label }}:
-    v-chip.px-0.mx-1(v-for="(resource, i) in value" :key="i" x-small label :color="resourceColor()") {{ value }} / {{ maxStamina }}
+    v-chip.px-0.mx-1(v-for="(resource, i) in value" :key="i" x-small label :color="resourceColor()")
       v-avatar(center)
         v-icon(color="yellow") mdi-star
     v-btn(@click="value--") test
@@ -12,17 +12,13 @@ export default {
   data() {
     return {
       label: "Stamina",
-      value: this.$stamina,
+      value: 0,
+      maxStamina: 0
     };
   },
   methods: {
     resourceColor() {
       return "yellow darken-3";
-    },
-  },
-  computed: {
-    maxStamina() {
-      return this.$store.state.maxStamina;
     },
   },
   watch: {
@@ -34,8 +30,8 @@ export default {
     },
   },
   created() {
-    this.$eventHub.$on("characterSet", () => {
-      this.value = this.$store.state.maxStamina;
+    this.$eventHub.$on("characterSet", (value) => {
+      this.value = this.maxStamina = 6 - value;
     });
     this.$eventHub.$on("levelUp", () => {
       //do not gain stamina on levelUp while playing on Hard

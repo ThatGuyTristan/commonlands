@@ -49,21 +49,18 @@ export default new Vuex.Store({
         //warrior
         case 1:
           state.maxHealth += 12;
-          state.maxStamina = 4;
           state.character = value;
           state.characterClass = "Warrior";
           break;
         //ranger
         case 2:
           state.maxHealth += 10;
-          state.maxStamina = 5;
           state.character = value;
           state.characterClass = "Ranger";
           break;
         //wizard
         case 3:
           state.maxHealth += 8;
-          state.maxStamina = 3;
           state.character = value;
           state.characterClass = "Wizard";
           break;
