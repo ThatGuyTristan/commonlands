@@ -6,7 +6,7 @@ const monsters = [
   },
   {
     id: 2,
-    name: "an orc warrior",
+    name: "an orc knight",
     threat: "yellow",
   },
   {

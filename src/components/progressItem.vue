@@ -44,6 +44,10 @@ export default {
           this.color = "green";
           this.icon = "mdi-help";
           break;
+        case "escorted":
+          this.color = "brown";
+          this.icon = "walk";
+          break;
         case "highkeep":
           this.color = "black";
           this.icon = "mdi-chess-rook";
