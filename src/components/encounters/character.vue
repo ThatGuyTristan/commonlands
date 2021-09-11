@@ -10,8 +10,8 @@
         @click:append="setName()"
         append-icon="mdi-arrow-right")
     v-col.mx-auto(v-else)
-      v-btn.mx-2(plain color="success" @click="setCharacter(1)") A brave warrior
-      v-btn.mr-2(plain @click="setCharacter(2)") A cunning ranger
+      v-btn.mx-2(plain disabled color="success" @click="setCharacter(1)") A brave warrior
+      v-btn.mr-2(plain disabled @click="setCharacter(2)") A cunning ranger
       v-btn.ml-2(plain color="error" @click="setCharacter(3)") A jaded wizard
 </template>
 
