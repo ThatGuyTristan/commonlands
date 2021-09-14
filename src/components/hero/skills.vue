@@ -1,7 +1,7 @@
 <template lang="pug">
   v-row(no-gutters)
-    v-card.ma-2(
-      :disabled="!findCondition(item.condition)"
+    v-btn.ma-2(
+      :disabled="!findCondition(item.condition) && $gameOn"
       @click="doSpell(item.emit)"
       :color="item.color"
       v-for="item in skills"
@@ -56,7 +56,7 @@ export default {
       this.$eventHub.emit(string);
     },
     findCondition(condition) {
-      if (condition == this.$store.state.encounterType && this.$stamina) {
+      if (condition == this.$store.state.encounterType) {
         return true;
       }
     },

@@ -1,6 +1,6 @@
 const wizard_skills = [
   {
-    name: "Shock of Lightning",
+    name: "Lightning",
     used: false,
     color: "blue",
     condition: "monster",

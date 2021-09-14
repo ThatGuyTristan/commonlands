@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     sendToFreeport(){
-      this.$eventHub.$emit("reinforceFreeport", 20);
+      this.$eventHub.$emit("reinforceFreeport", 40);
       this.$eventHub.$emit("setSnack", { text: "The giant charges in the direction of the Dark Elven camps!", color: "blue"})
 
     },

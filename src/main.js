@@ -5,7 +5,7 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 import EventHub from "vue-event-hub";
 
-Vue.prototype.$stamina = 3;
+Vue.prototype.$gameOn = true;
 
 Vue.config.productionTip = false;
 

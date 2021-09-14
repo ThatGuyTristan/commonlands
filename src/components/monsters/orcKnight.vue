@@ -17,22 +17,21 @@
 
 <script>
 import skillTests from "@/mixins/skillTests";
-import setSnack from "@/mixins/setSnack";
 
 export default {
-  mixins: [skillTests, setSnack],
+  mixins: [skillTests],
   data: () => ({
     name: "an orc knight",
     maxHealth: 8,
     health: 8,
     accuracy: 60,
-    resistance: 60,
-    coerced: false,
+    coerceResistance: 60,
+    shoutResistance: 60,
     shaken: false,
+    coerced: false
   }),
   mounted() {
-    this.setSnack("You encounter an orc pawn!", "grey");
-    // this.$eventHub.on("attack", this.attack);
+    this.$eventHub.$emit("setSnack", { text: "You encounter an orc knight!", color: "grey" });
     this.$eventHub.on("coerce", this.coerceResponse);
     this.$eventHub.on("shout", this.shoutResponse);
     this.$eventHub.on("disarm", this.disarmRespnse);
@@ -46,6 +45,9 @@ export default {
     },
   },
   methods: {
+    monsterAttack(bonus){
+      this.$eventHub.$eventHub("damagePlayer", 5 + bonus)
+    },
     skewer(){
       this.$eventHub.$emit("setSnack", { text: "You order the orc to impale itself!", color: "orange" })
       this.health = 0;
@@ -56,11 +58,10 @@ export default {
       this.health = -0;
     },
     coerceResponse() {
-      console.log("INSIDE COERECE");
-      if (this.spellSuccessful()) {
+      if (this.spellSuccessful(this.coerceResistance)) {
         this.coerced = true;
       } else {
-        console.log("monster attacks with bonus");
+        this.monsterAttack(3)
       }
     },
     shoutResponse() {
@@ -80,11 +81,11 @@ export default {
       }
     },
     lightningResponse() {
-      console.log("INSIDE lightning");
-      if (this.spellSuccessful(this.resistance)) {
-        console.log("lightning strike damages OK and lowers accuracy");
+      if (this.spellSuccessful()) {
+        this.health -= 10;
+        this.$eventHub.$emit("setSnack", { text: "The orc knight's body convulses with lightning!", color: "orange" })
       } else {
-        console.log("OK resisted thunder");
+        this.$eventHub.$emit("setSnack", { text: "The orc knight dives beneath your lightning", color: "white" })
       }
     },
   },

@@ -47,10 +47,10 @@ export default {
   },
   methods: {
     sendToFreeport(){
-      this.$eventHub.$emit("setSnack", { text: "You send the orc pawn against the Dark Elven camps! You don't suspect he'll live very long.", color: "grey" })
+      this.$eventHub.$emit("setSnack", { text: "You send the orc pawn against the Ogre camps. You don't suspect he'll live very long.", color: "grey" })
     },
     protect(){
-      this.$eventHub.$emit("addProtector", 4)
+      this.$eventHub.$emit("addProtector", 3)
       this.$eventHub.$emit("setSnack", { text: "You order the orc pawn to follow you!", color: "green" })
     },
     coerceResponse() {

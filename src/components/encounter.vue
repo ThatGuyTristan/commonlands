@@ -28,7 +28,7 @@ export default {
     Prompt: () => import("./encounters/prompt.vue"),
   },
   data: () => ({
-    encounterString: "Choose your difficulty",
+    encounterString: "Freeport is burning",
     intro: true,
   }),
   computed: {

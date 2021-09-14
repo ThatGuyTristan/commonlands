@@ -34,8 +34,6 @@ export default {
       this.healDamage(5 - this.$store.state.difficulty);
     });
     this.$eventHub.$on("damagePlayer", this.takeDamage());
-    //setInterval(this.takeDamage, 5000);
-    // setInterval(this.healDamage, 6000);
   },
   watch: {
     value(val) {
@@ -57,10 +55,11 @@ export default {
       if (this.value < 0) {
         return;
       }
+      this.$eventHub.$emit("setSnack", { text: `You take ${damage} points of damage!`, color: "red"})
       this.value -= damage;
     },
     healDamage(heal) {
-      console.log("HEAL", heal);
+      //make sure we never heal above max
       if (this.value < 0 || this.value >= this.maxHealth) {
         return;
       }

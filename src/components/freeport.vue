@@ -33,13 +33,14 @@ export default {
     },
     increaseStatis(val){
       this.status += val;
-    }
+    },
   },
   watch: {
     status(val) {
       if (val <= 0) {
+        this.$gameOn = false;
         this.$eventHub.$emit("setSnack", {
-          text: "Freeport has been conquered.",
+          text: "Freeport has been conquered.querySelectorAll",
           color: "red",
         });
       }

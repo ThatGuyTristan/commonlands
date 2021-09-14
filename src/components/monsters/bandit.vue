@@ -17,11 +17,10 @@
 
 <script>
 import skillTests from "@/mixins/skillTests";
-import setSnack from "@/mixins/setSnack";
 import items from "@/assets/js/items"
 
 export default {
-  mixins: [skillTests, setSnack],
+  mixins: [skillTests],
   data: () => ({
     name: "a desparate bandit",
     maxHealth: 8,
@@ -56,27 +55,24 @@ export default {
       this.$eventHub.$emit("loot", item);
       this.$eventHub.$emit("setSnack", { text: `The bandit hands you a ${item.name}`, color: "green" })
     },
-    attack(value = 4, modifier = 0) {
+    monsterAttack(bonus) {
       if (this.shaken) {
         this.$eventHub.$emit({ text: "The bandit is shaken and cannot attack", color: "grey"});
         return;
       }
 
       if (this.spellSuccessful(this.accuracy)) {
-        //Find the monster's damage
-        let damage = Math.ceil(Math.random() * (value + modifier));
         this.setSnack("The bandit slashes at you with a dagger!", "red");
-        this.$eventHub.$emit("damagePlayer", damage);
+        this.$eventHub.$emit("damagePlayer", 3 + bonus);
       } else {
         this.setSnack("The bandit slashes for your body, but misses.", "grey");
       }
     },
     coerceResponse() {
-      console.log("uuhhhh");
       if (this.spellSuccessful(this.coerceResistance)) {
         this.coerced = true;
       } else {
-        this.attack(_0, 2);
+        this.attack(2);
       }
     },
     shoutResponse() {
