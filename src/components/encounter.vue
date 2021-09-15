@@ -1,18 +1,19 @@
 <template lang="pug">
-  v-container(fluid)
-    h3.mt-0.text-center {{ encounterString }}
+  div
+    h3.text-center {{ encounterString }}
     v-card(flat dark)
       v-card-text.text-center.align-center
-        div(v-if="intro")
-          Intro(@done="intro = false")
-        div.main(v-else)
-          Prompt(v-if="encounterType == 'prompt'")
-          Character(v-if="encounterType == 'character'")
-          Difficulty(v-if="encounterType == 'difficulty'")
-          Monster(v-if="encounterType == 'monster'")
-          Travel(v-if="encounterType == 'travel'")
-          Event(v-if="encounterType == 'event'")
-          Rest(v-if="encounterType == 'rest'")
+        div.main 
+          div(v-if="intro")
+            Intro(@done="intro = false")
+          div(v-else)
+            Prompt(v-if="encounterType == 'prompt'")
+            Character(v-if="encounterType == 'character'")
+            Difficulty(v-if="encounterType == 'difficulty'")
+            Monster(v-if="encounterType == 'monster'")
+            Travel(v-if="encounterType == 'travel'")
+            Event(v-if="encounterType == 'event'")
+            Rest(v-if="encounterType == 'rest'")
 </template>
 
 <script>
@@ -61,6 +62,6 @@ export default {
 
 <style scoped>
 .main {
-  height: 450px;
+  height: 250px;
 }
 </style>

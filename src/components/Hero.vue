@@ -5,15 +5,16 @@
         h5.pl-3 Level {{ $store.state.level }}
         h5.pl-3 {{ $store.state.characterClass}}
     v-row
-      v-col(cols="4")
+      v-col(cols="3")
         div.stat
           HealthBar
         div.stat
           ExperienceBar
         div.stat
           StaminaBar
-      v-col(cols="4")
-      v-col(cols="4")
+      v-col(cols="6")
+          Encounter
+      v-col(cols="3")
         Skills
         Inventory
 </template>
@@ -26,6 +27,7 @@ export default {
     StaminaBar: () => import("@/components/hero/staminaBar"),
     Inventory: () => import("@/components/hero/inventory"),
     Skills: () => import("@/components/hero/skills"),
+    Encounter: () => import("@/components/encounter")
   },
   data: () => ({
     displayName: null,

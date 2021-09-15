@@ -54,6 +54,7 @@ export default {
       let item = items[Math.round(Math.random() * items.length)]
       this.$eventHub.$emit("loot", item);
       this.$eventHub.$emit("setSnack", { text: `The bandit hands you a ${item.name}`, color: "green" })
+      this.coerced = false;
     },
     monsterAttack(bonus) {
       if (this.shaken) {

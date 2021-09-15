@@ -14,7 +14,6 @@ export default {
     status: 110,
   }),
   created() {
-    // setInterval(() => { this.reduceStatus(5) }, 1000)
     this.$eventHub.$on("finishEvent", () => {
       this.reduceStatus(10);
     });
@@ -40,7 +39,7 @@ export default {
       if (val <= 0) {
         this.$gameOn = false;
         this.$eventHub.$emit("setSnack", {
-          text: "Freeport has been conquered.querySelectorAll",
+          text: "Freeport has been conquered.",
           color: "red",
         });
       }

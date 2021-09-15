@@ -20,7 +20,6 @@ export default {
   },
   methods: {
     ammendObj(obj) {
-      console.log(obj);
       this.items.unshift(obj);
     },
   },

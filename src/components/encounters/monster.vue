@@ -1,9 +1,9 @@
 <template lang="pug">
   v-row.justify-center
-    orcPawn(v-if="monsterId== 1")
-    orcKnight(v-if="monsterId == 2")
-    bandit(v-if="monsterId == 3")
-    hillGiant(v-if="monsterId== 4")
+    orcPawn(v-if="monsterId == 0")
+    orcKnight(v-if="monsterId == 1")
+    bandit(v-if="monsterId == 2")
+    hillGiant(v-if="monsterId== 3")
 </template>
 
 <script>
@@ -22,9 +22,9 @@ export default {
     monsterId: 0,
   }),
   created() {
-    // this.monsterId = Math.ceil(Math.random() * 4);
-    this.monsterId = 2;
-    this.$eventHub.$emit("setEncounterString", "You encounter a monster!");
+    this.monsterId = Math.round(Math.random() * 4);
+    let monsterName = this.monsters[this.monsterId].name
+    this.$eventHub.$emit("setEncounterString", `You encounter ${monsterName}!`);
   },
 };
 </script>
